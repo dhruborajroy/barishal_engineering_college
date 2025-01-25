@@ -2,7 +2,9 @@
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>© Copyrights <a href="http://bec.edu.bd" target="blank">Barishal Engineering College </a> 2018-<?php echo date('Y')?>.| P-1102 | V-1.1.2 |
+        All
+        rights reserved. Developed by <a href="https://dhruborajroy.github.io/myPortfollioWebsite">The Web Divers</a></p>
                                 </div>
                             </div>
                         </div>

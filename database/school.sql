@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2025 at 09:14 AM
+-- Generation Time: Jan 25, 2025 at 07:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`id`, `title`, `details`, `added_on`, `updated_on`, `added_by`, `status`) VALUES
-('1', 'Brief Introduction', '<p style=\" text-align: justify;text-justify: inter-word;\">Barishal Engineering College is located on an 8-acre plot about 13 km east of the divisional city of Barisal, near the Borishal-Bhola highway in North Duragpur, under the Banaripara police station. This college has been approved for student enrollment from the current (2017-18) session under the affiliation of the University of Dhaka since November 16, 2017. The construction and completion of this institution are expected to be finished by June 2018, under a project implemented by the Ministry of Education’s Directorate of Technical Education, which operates under the Technical and Madrasa Education Division, aiming to expand engineering education in the country. The academic activities of this institution will be conducted under the Faculty of Engineering and Technology of the University of Dhaka. Currently, the college will enroll students in two departments: (1) Electrical and Electronics Engineering (EEE) and (2) Civil Engineering (CE). In each academic session, a total of 120 students, 60 from each department, will be admitted. The college features an administrative building, four academic buildings, a 400-seat male dormitory, and a 100-seat female dormitory, as well as residential facilities for teachers and staff. This institution also has a spacious playground, a library with subject-based books, modern computer labs with high-speed internet, and state-of-the-art labs/workshops, providing modern educational facilities. 50% of the admitted students will receive semester-based merit scholarships at the rate determined by the government. For more information about the college, please call: 02-9103956.</p><p><br><br><br> </p>', '1682185673', '1737742530', '1', 1);
+('1', 'Brief Introduction', '<p style=\" text-align: justify;text-justify: inter-word;\"><b>Barishal Engineering College </b>is located on an 8-acre plot about 13 km east of the divisional city of Barisal, near the Barishal-Bhola highway in North Duragpur, under the Banaripara police station. This college has been approved for student enrollment from the current (2017-18) session under the affiliation of the University of Dhaka since November 16, 2017. The construction and completion of this institution are expected to be finished by June 2018, under a project implemented by the Ministry of Education’s Directorate of Technical Education, which operates under the Technical and Madrasa Education Division, aiming to expand engineering education in the country. The academic activities of this institution will be conducted under the Faculty of Engineering and Technology of the University of Dhaka. Currently, the college will enroll students in two departments: (1) Electrical and Electronics Engineering (EEE) and (2) Civil Engineering (CE). In each academic session, a total of 120 students, 60 from each department, will be admitted. The college features an administrative building, four academic buildings, a 400-seat male dormitory, and a 100-seat female dormitory, as well as residential facilities for teachers and staff. This institution also has a spacious playground, a library with subject-based books, modern computer labs with high-speed internet, and state-of-the-art labs/workshops, providing modern educational facilities. 50% of the admitted students will receive semester-based merit scholarships at the rate determined by the government. For more information about the college, please call: 02-9103956.</p><p><br><br><br>&nbsp;</p>', '1682185673', '1737805671', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,8 @@ CREATE TABLE `dept_sliders` (
 INSERT INTO `dept_sliders` (`id`, `image`, `title`, `dept`, `sub_title`, `button_text`, `button_link`, `added_by`, `added_on`, `updated_on`, `status`) VALUES
 ('67939eafd3ade', '1737727663.jpg', '', 'CE', '', '', '', '1', '1737727663', '1737727976', 1),
 ('67939ec1e574b', '1737727681.jpg', '', 'EEE', '', '', '', '1', '1737727681', '', 1),
-('67939ece0c034', '1737727694.jpg', '', 'GSH', '', '', '', '1', '1737727694', '1737727847', 1);
+('67939ece0c034', '1737727694.jpg', '', 'GSH', '', '', '', '1', '1737727694', '1737727847', 1),
+('6794cee7d17f4', '1737805543.jpg', '', 'EEE', '', '', '', '1', '1737805543', '', 1);
 
 -- --------------------------------------------------------
 
@@ -355,7 +356,13 @@ INSERT INTO `login_logs` (`id`, `admin_id`, `email`, `ip_address`, `status`, `ti
 (26, '1', 'Dhruborajroy3@gmail.com', '172.29.41.171', 'Success', '2025-01-24 19:03:03'),
 (27, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-24 21:33:46'),
 (28, '1', 'Dhruborajroy3@gmail.com', '172.29.41.171', 'Success', '2025-01-24 23:33:10'),
-(29, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 09:12:12');
+(29, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 09:12:12'),
+(30, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 15:37:55'),
+(31, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:12'),
+(32, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:17'),
+(33, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:36'),
+(34, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:52'),
+(35, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:56:47');
 
 -- --------------------------------------------------------
 
@@ -530,6 +537,56 @@ INSERT INTO `referances` (`id`, `name`, `priority`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` int(3) NOT NULL,
+  `name` text NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `name`, `status`) VALUES
+(1, 'Testimonial(Running Student)', 1),
+(2, 'Testimonial(Graduate Student)', 1),
+(3, 'Medium of Instruction(MOI)', 1),
+(4, 'Recomendation Letter', 1),
+(5, 'Hall Clearance', 1),
+(6, 'Course Completion Certificate', 1),
+(7, 'Certificate Withdrawal', 1),
+(8, 'Character Certificate', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services_request`
+--
+
+CREATE TABLE `services_request` (
+  `id` varchar(20) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
+  `reason` text NOT NULL,
+  `type` text NOT NULL,
+  `public_access` int(3) NOT NULL,
+  `added_on` int(10) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `services_request`
+--
+
+INSERT INTO `services_request` (`id`, `student_id`, `reason`, `type`, `public_access`, `added_on`, `status`) VALUES
+('6795032ef1555', '1', 'sdfdsvsdvs', '1', 0, 1737818926, '0'),
+('67952853d9584', '1', 'sdfdsf', '2', 0, 1737828435, '0');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `site_details`
 --
 
@@ -623,7 +680,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `class_roll`, `reg_no`, `session`, `fName`, `mName`, `phoneNumber`, `presentAddress`, `permanentAddress`, `dob`, `gender`, `religion`, `bloodGroup`, `dept_id`, `batch`, `password`, `email`, `image`, `status`) VALUES
-(1, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '1', '$2y$10$h5O4.GWWp7jXOO8wxJrJEea9khjI5sIhWhBgbVSYZHthr2NRmGBdi', 'dhruborajroy3c@gmail.com', '1737740643.jpg', 1),
+(1, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '1', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
 (4, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '1', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1);
 
 -- --------------------------------------------------------
@@ -658,7 +715,8 @@ INSERT INTO `sub_menu` (`id`, `menu_id`, `name`, `status`) VALUES
 ('677c2ae46ba64', '677c2ac74af0a', 'Staff', 1),
 ('677d4e1ea8030', '677d4e0da4275', 'cvbcvd', 1),
 ('677d4e23a7794', '677d4e0da4275', 'cvbcvd', 1),
-('67935d681ae7b', '67935d579e697', 'Demo', 1);
+('67935d681ae7b', '67935d579e697', 'Demo', 1),
+('6794d167396af', '6794d15f9567e', 'test ', 1);
 
 -- --------------------------------------------------------
 
@@ -789,6 +847,18 @@ ALTER TABLE `referances`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `services_request`
+--
+ALTER TABLE `services_request`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `site_details`
 --
 ALTER TABLE `site_details`
@@ -856,7 +926,13 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `students`
