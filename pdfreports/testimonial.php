@@ -43,7 +43,7 @@ while ($student = mysqli_fetch_assoc($result)) {
     $mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
 
     $html = '<table width="100%">'; 
-    $html .= ' 
+   $html .= ' 
         <tr>
             <td align="left" colspan="3" style="font-size:20px">
                 <span style="font-size:25px; font-family: Siyam Rupali;">সিভিল ইঞ্জিনিয়ারিং বিভাগ</span><br>
@@ -91,7 +91,7 @@ while ($student = mysqli_fetch_assoc($result)) {
             </td>
         </tr>';
     $qr_text = "http://mashallah.shop/BEC/notice_files/" . $student['reg_no'] . "_TESTIMONIAL.pdf";
-    QRcode::png($qr_text, $filepath);
+    // QRcode::png($qr_text, $filepath);
     $html .= '
         <tr>
             <td align="right" colspan="2">
@@ -119,7 +119,7 @@ while ($student = mysqli_fetch_assoc($result)) {
     $mpdf->Output("../notice_files/" . $file, 'F'); 
     $all_testimonials_html .= $html;
 }
-
+// echo $html;
 $all_mpdf = new \Mpdf\Mpdf([
     'tempDir' => __DIR__ . '/custom',
     'default_font_size' => 12,

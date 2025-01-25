@@ -4,6 +4,22 @@ if (!defined('SECURE_ACCESS')) {
 	die("Direct access not allowed!");
   }
 require('connection.inc.php');
+
+
+
+
+
+define('FRONT_SITE_PATH','http://localhost/');
+define('SLIDER_IMAGE',FRONT_SITE_PATH."/images/sliders/");
+define('DEPT_SLIDER_IMAGE',FRONT_SITE_PATH."/images/dept/sliders/");
+define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/sliders/");
+define('UPLOAD_DEPT_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/dept/sliders/");
+define('UPLOAD_FACULTY_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/teachers/");
+define('UPLOAD_NOTICE_PDF',$_SERVER['DOCUMENT_ROOT']."/notice_files/");
+define('UPLOAD_NEWS_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/news/");
+define('UPLOAD_STUDENT_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/students/");
+
+
 $site_res=mysqli_query($con,"SELECT * FROM `site_details` where id='1'");
 if(mysqli_num_rows($site_res)>0){
 	$site_res_row=mysqli_fetch_assoc($site_res);
@@ -20,7 +36,7 @@ if(mysqli_num_rows($site_res)>0){
 	define('SMTP_PASSWORD',$site_res_row['smtp_password']);
 	
 }else{	
-	define('LOGO','../images/gallery/logo.png');
+	define('LOGO',FRONT_SITE_PATH.'/images/gallery/logo.png');
 	define('BD_LOGO','../images/bd.png');
 	define('NAME',"
 	গণপ্রজাতন্ত্রী বাংলাদেশ সরকার 
@@ -39,19 +55,6 @@ if(mysqli_num_rows($site_res)>0){
 	define('SMTP_PASSPORT',"");
 }
 
-
-
-
-
-define('FRONT_SITE_PATH','http://localhost/');
-define('SLIDER_IMAGE',FRONT_SITE_PATH."/images/sliders/");
-define('DEPT_SLIDER_IMAGE',FRONT_SITE_PATH."/images/dept/sliders/");
-define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/sliders/");
-define('UPLOAD_DEPT_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/dept/sliders/");
-define('UPLOAD_FACULTY_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/teachers/");
-define('UPLOAD_NOTICE_PDF',$_SERVER['DOCUMENT_ROOT']."/notice_files/");
-define('UPLOAD_NEWS_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/news/");
-define('UPLOAD_STUDENT_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/students/");
 
 
 
