@@ -145,11 +145,21 @@ if(isset($_POST['submit'])){
                                 <label>Details</label>
                                 <textarea name="details" class="full_input" id="details" cols="30" rows="10"><?php echo $details?></textarea>
                             </div>
-                            <div class="col-12-xxxl col-lg-12 col-12  form-group">
-                                <label>Dept</label>
-                                <input type="text" required placeholder="" class="form-control" name="dept" id="dept"
-                                    value="<?php echo $dept?>">
-                            </div>
+                                <div class="col-xl-12 col-lg-12 col-12 form-group">
+                                    <label>Dept *</label>
+                                    <select class="form-control select2" name="dept" required>
+                                        <?php
+                                        $res=mysqli_query($con,"SELECT * FROM `depts_lab_list` where status='1'");
+                                        while($row=mysqli_fetch_assoc($res)){
+                                            if($row['short_form']==$dept){
+                                                echo "<option selected='selected' value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
+                                            }else{
+                                                echo "<option value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
+                                            }                                                        
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             
                             <div class="col-lg-12 col-12 form-group">
                                     <div class="col-sm-12 img-body">
