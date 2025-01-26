@@ -6,14 +6,13 @@ $student_id="";
 $student_name="";
 $reason="";
 $type="";
-$public_access="";
 $added_on="";
 $msg="";
 $required='required';
 $service_name="";
 $batch_name="";
-$public_access="";
-$downloadable="";
+$public_access="0";
+$downloadable="0";
 if(isset($_GET['id']) && $_GET['id']!==""){
 	$id=get_safe_value($_GET['id']);
     $swl="select services_request.*,services.name as service_name ,students.name as student_name,students.reg_no,batch.name as batch_name from services_request,students,services,batch  where (services_request.id)='$id' and students.id=services_request.student_id and services_request.type=services.id and students.batch=batch.id";
@@ -43,16 +42,32 @@ if(isset($_GET['id']) && $_GET['id']!==""){
 }
 if(isset($_POST['submit'])){
 	$status=get_safe_value($_POST['status']);
-	$public_access=get_safe_value($_POST['public_access']);
-	$downloadable=get_safe_value($_POST['downloadable']);
+    if(isset($_POST['public_access'])){
+        $public_access=get_safe_value($_POST['public_access']);
+        if($public_access=='on'){
+            $public_access="1";
+        }
+    }else{
+        $public_access="0";
+    }
+    if(isset($_POST['downloadable'])){
+            $downloadable="1";
+    }else{
+        $downloadable="0";
+    }
     $added_on=time();
-    $sql="UPDATE `services_request` SET `status` = '$status' WHERE `services_request`.`id` ='$id'";
+    $sql="UPDATE `services_request` SET `status` = '$status', `public_access` = '$public_access',`downloadable` = '$downloadable' WHERE `services_request`.`id` ='$id'";
     if(mysqli_query($con,$sql)){
         $_SESSION['TOASTR_MSG']=array(
             'type'=>'success',
             'body'=>'Data Updated',
             'title'=>'Success',
         );
+        if($status=='Approved'){
+            redirect("service_print.php?id=".$id);
+        }else{ 
+            redirect("service_requests.php");
+        }
     }
 }
 ?>
@@ -103,11 +118,11 @@ if(isset($_POST['submit'])){
                                 <div class="col-12-xxxl col-lg-6 col-12 form-group row">
                                     <div class="col-2-xxxl col-lg-2 col-12 form-group">
                                         <label>Public Access</label>
-                                        <input class="form-control" type="checkbox" value="<?php echo $i?>"  id="fee_checkbox_<?php echo $i?>"  onchange="get_fee_total(this.value)">
+                                        <input class="form-control" name="public_access" <?php echo $public_access == '1' ? 'checked' : ''; ?> type="checkbox" >
                                     </div>
                                     <div class="col-2-xxxl col-lg-2 col-12 form-group">
                                         <label>Downloadable</label>
-                                        <input class="form-control" type="checkbox" value="<?php echo $i?>"  id="fee_checkbox_<?php echo $i?>"  onchange="get_fee_total(this.value)">
+                                        <input class="form-control" name="downloadable" <?php echo $downloadable == '1' ? 'checked' : ''; ?> type="checkbox" >
                                     </div>
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-12 form-group">
@@ -137,16 +152,6 @@ if(isset($_POST['submit'])){
                                     <input type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"
                                         name="submit">
                                 </div>
-                                <script type="text/javascript">
-                                function showPreview(event) {
-                                    if (event.target.files.length > 0) {
-                                        var src = URL.createObjectURL(event.target.files[0]);
-                                        var preview = document.getElementById("file_ip_1-preview");
-                                        preview.src = src;
-                                        preview.style.display = "block";
-                                    }
-                                }
-                                </script>
                                 </div>
                             </div>
                         </div>
@@ -157,15 +162,3 @@ if(isset($_POST['submit'])){
         <!-- Add Notice Area End Here -->
     </div>
     <?php include("footer.php")?>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-
-    <script>
-            ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-    </script>
