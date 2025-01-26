@@ -69,7 +69,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                                         <span class="flaticon-more-button-of-three-dots"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="manage_faculty.php?id=<?php echo $row['id']?>"><i
+                                        <a class="dropdown-item" href="manage_service_requests.php?id=<?php echo $row['id']?>"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
                                                 <?php if($row['status']=='0'){?>
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
