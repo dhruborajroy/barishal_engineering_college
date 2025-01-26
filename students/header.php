@@ -76,7 +76,7 @@
                         </li>
                         <li>
                             <a href="services">
-                                <i class="fas fa-chart-bar"></i>Services</a>
+                                <i class="fas  fa-certificate"></i>Services</a>
                         </li>
                         <li>
                             <a href="profile">
@@ -106,7 +106,7 @@
                         </li>
                         <li>
                             <a href="services">
-                                <i class="fas fa-chart-bar"></i>Services</a>
+                                <i class="fas  fa-certificate"></i>Services</a>
                         </li>
                         <li>
                             <a href="profile">

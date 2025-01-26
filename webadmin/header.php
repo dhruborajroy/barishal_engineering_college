@@ -246,6 +246,21 @@ isAdmin();
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Services & Requests </span></a>
+                  <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
+                  <li class="nav-item">
+                        <a href="service_requests"
+                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="fas fa-angle-right"></i>services_request</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="labs"
+                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="fas fa-angle-right"></i>Labs</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
                   <ul class="nav sub-group-menu ">
                      <li class="nav-item">
