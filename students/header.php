@@ -74,20 +74,13 @@
                             <a href="index">
                                 <i class="fas fa-chart-bar"></i>Dashboard</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="services">
+                                <i class="fas fa-chart-bar"></i>Services</a>
+                        </li>
+                        <li>
+                            <a href="profile">
+                                <i class="fas fa-chart-bar"></i>Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -99,7 +92,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                    <img src="../images/logo.png" alt="BEC Logo" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">

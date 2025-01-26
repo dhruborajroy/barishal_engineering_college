@@ -8,10 +8,6 @@ require_once("../inc/smtp/class.phpmailer.php");
 
 $msg = "";
 
-// if(isset($_SESSION['ADMIN_LOGIN'])){
-//     redirect('index.php');
-// }
-
 if(isset($_POST['submit'])){
     $email = mysqli_real_escape_string($con, trim($_POST['email']));
     $password = trim($_POST['password']);
@@ -25,7 +21,8 @@ if(isset($_POST['submit'])){
     if($res_attempts && mysqli_num_rows($res_attempts) > 0){
         $row_attempts = mysqli_fetch_assoc($res_attempts);
         if ($row_attempts['attempts'] >= $limit && ($time - $row_attempts['last_attempt']) < $lockout_time) {
-            $msg = "Too many failed login attempts. Try again later.";
+            $msg = '<div class="alert alert-danger" role="alert">
+					Too many failed login attempts. Try again later.</div>';
         } else {
             if (($time - $row_attempts['last_attempt']) >= $lockout_time) {
                 mysqli_query($con, "DELETE FROM login_attempts WHERE ip_address='$ip_address'");
@@ -40,19 +37,29 @@ if(isset($_POST['submit'])){
             $row = mysqli_fetch_assoc($res);
 
             if($row['status'] != 1){
-                $msg = "You haven't verified your email yet. Please verify your email.";
+                $msg = '<div class="alert alert-danger" role="alert">
+					You haven\'t verified your email yet. Please verify your email.				</div>';
             } else {
                 if(password_verify($password, $row['password'])){
-                    $_SESSION['USER_LOGIN']=true;
-                    $_SESSION['USER_ID']=$row['id'];
-                    $_SESSION['USER_NAME']=$row['name'];
-                    $_SESSION['IMAGE']=$row['image'];
-                    $_SESSION['EMAIL']=$row['email'];
-                    mysqli_query($con, "INSERT INTO login_logs (admin_id, email, ip_address, status, timestamp) 
-                    VALUES ('{$row['id']}', '$email', '$ip_address', 'Success', NOW())");
-                    mysqli_query($con, "DELETE FROM login_attempts WHERE ip_address='$ip_address'");
-                    redirect('./index.php');
-                    die();
+                    // Generate OTP
+                    $otp = rand(100000, 999999);
+                    $expires_at = date('Y-m-d H:i:s', strtotime('+10 minutes'));
+
+                    // Save OTP in the database
+                    $query = "INSERT INTO otp_verification (user_id, email, otp_code, expires_at) 
+                              VALUES ('{$row['id']}', '$email', '$otp', '$expires_at') 
+                              ON DUPLICATE KEY UPDATE otp_code='$otp', expires_at='$expires_at'";
+                    mysqli_query($con, $query);
+
+                    // Send OTP via email
+                    $subject = "Your OTP Code for Login";
+                    $html = "<p>Your OTP code is: <b>$otp</b>. It is valid for 10 minutes.</p>";
+                    send_email($email, $html, $subject);
+                    // Store user ID for verification
+                    $_SESSION['OTP_USER_ID'] = $row['id'];
+                    $_SESSION['OTP_USER_EMAIL'] = $email;
+                    header("Location: verify_otp.php");
+                    exit();
                 } else {
                     $msg = "Incorrect login details.";
 
@@ -67,7 +74,9 @@ if(isset($_POST['submit'])){
                 }
             }
         } else {
-            $msg = "Incorrect login details.";
+            $msg = '<div class="alert alert-danger" role="alert">
+					Incorrect login details.
+				</div>';
         }
     }
 }
@@ -118,7 +127,7 @@ if(isset($_POST['submit'])){
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="../images/logo.png" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">

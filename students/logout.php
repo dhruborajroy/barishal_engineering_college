@@ -5,8 +5,9 @@ session_regenerate_id();
 include('../inc/connection.inc.php');
 include('../inc/constant.inc.php');
 include('../inc/function.inc.php');
-isAdmin();
-unset($_SESSION['ADMIN_LOGIN']);
-unset($_SESSION['ADMIN_ID']);
+isUSER();
+unset($_SESSION['USER_LOGIN']);
+unset($_SESSION['USER_ID']);
+unset($_SESSION['USER_EMAIL']);
 redirect('login.php');
 ?>
