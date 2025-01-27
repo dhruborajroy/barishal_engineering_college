@@ -172,11 +172,18 @@ include('../../inc/function.inc.php');
 	}
     
 	<?php
-	$sql = "SELECT d.id AS dept_id, d.name AS dept_name, COUNT(s.id) AS student_count 
-	FROM depts_lab_list d 
-	LEFT JOIN students s ON d.id = s.dept_id 
-	WHERE d.public_view = '1' 
-	GROUP BY d.id, d.name ";
+	$sql = "SELECT 
+    b.id AS batch_id, 
+    b.name AS batch_name, 
+    d.id AS dept_id, 
+    d.name AS dept_name, 
+    COALESCE(COUNT(s.id), 0) AS student_count  -- Ensures zero count when no students exist
+	FROM batch b
+	LEFT JOIN students s ON b.id = s.batch AND s.dept_id = 2  -- Ensures the dept_id condition applies correctly
+	LEFT JOIN depts_lab_list d ON d.id = 2  -- Keeps dept_id = 2 fixed
+	WHERE d.public_view = '1'
+	GROUP BY b.id, b.name, d.id, d.name
+	ORDER BY b.id ASC, d.id ASC";
 
 	$result = mysqli_query($con, $sql);
 
@@ -190,14 +197,12 @@ include('../../inc/function.inc.php');
 	}
 	?>
 	
-	/*-------------------------------------
-		  Line Chart 
+	/*------------------Line Chart ----------*/
 	  if ($("#earning-line-chart").length) {
     var lineChartData = {
-        labels: [<?php 
-			echo implode(",", array_map(fn($d) => "'".$d['dept_name']."'", $departments)); ?>],
+        labels: [<?php echo getDeptBatchList(1);?>],
         datasets: [{
-            data: [<?php echo implode(",", array_column($departments, 'student_count')); ?>],
+            data: [<?php echo getDeptStudentCount(1);?>],
             backgroundColor: '#ff0000',
             borderColor: '#ff0000',
             borderWidth: 1,
@@ -207,10 +212,10 @@ include('../../inc/function.inc.php');
             pointHoverRadius: 6,
             pointHoverBorderWidth: 3,
             fill: 'origin',
-            label: "Dept Name"
+            label: "Student of Civil Engineering "
         },
         {
-            data: [<?php echo implode(",", array_column($departments, 'student_count')); ?>],
+            data: [<?php echo getDeptStudentCount(2);?>],
             backgroundColor: '#437dfc',
             borderColor: '#417dfc',
             borderWidth: 1,
@@ -220,7 +225,7 @@ include('../../inc/function.inc.php');
             pointHoverRadius: 6,
             pointHoverBorderWidth: 3,
             fill: 'origin',
-            label: "D"
+            label: "Student of EEE "
         }]
     };
 
@@ -261,7 +266,6 @@ include('../../inc/function.inc.php');
     });
 }
     
-	  -------------------------------------*/
 
 	  
 	/*-------------------------------------

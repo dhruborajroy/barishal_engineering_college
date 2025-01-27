@@ -10,7 +10,7 @@ include("header.php");
             <li>
                 <a href="index.php">Home</a>
             </li>
-            <li>BEC General Infos</li>
+        <li>BEC General Infos</li>
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->

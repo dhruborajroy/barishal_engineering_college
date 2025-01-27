@@ -1,40 +1,47 @@
 <?php
-
-$arp=`arp -a`;
-$lines=explode("\n", $arp);
 $devices = array();
-foreach($lines as $line){
-    $cols=preg_split('/\s+/', trim($line));
-    if(isset($cols[2]) && $cols[2]=='dynamic'){
-      $temp = array();
-      $temp['ip'] = $cols[0];
-      $temp['mac'] = $cols[1];
-      $devices[] = $temp;
-  }
+
+if (stripos(PHP_OS, 'WIN') !== false) {
+    $arp = shell_exec("arp -a");
+} else {
+    $arp = shell_exec("arp -n");
+}
+
+if ($arp) {
+    if (preg_match_all('/(\d+\.\d+\.\d+\.\d+)\s+([a-fA-F0-9:-]+)/', $arp, $matches, PREG_SET_ORDER)) {
+        foreach ($matches as $match) {
+            $devices[] = ['ip' => $match[1], 'mac' => $match[2]];
+        }
+    }
 }
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha256-SC9pI7daKIBEHzXq0JEtOr9yMl5V7yMMqoowsw8uzNs=" crossorigin="anonymous" />
-
-
-<div class="container" style="margin-top:250px;">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-striped table-bordered">
-        <thead>
-          <tr>
-            <th>IP</th>
-            <th>MAC</th>
-          </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARP Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" style="margin-top:50px;">
+    <h3 class="text-center">Connected Devices</h3>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>IP Address</th>
+                <th>MAC Address</th>
+            </tr>
         </thead>
         <tbody>
-          <?php foreach($devices as $device){?>
-            <tr>
-              <td><?php echo $device['ip'];?></td>
-              <td><?php echo $device['mac'];?></td>
-            </tr>
-          <?php } ?>
+            <?php foreach ($devices as $device): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($device['ip']); ?></td>
+                    <td><?php echo htmlspecialchars($device['mac']); ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
-      </table>
-    </div>
-  </div>
+    </table>
 </div>
+</body>
+</html>

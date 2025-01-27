@@ -1,4 +1,5 @@
 <?php 
+die;
     define('SECURE_ACCESS', true);
    session_start();
    session_regenerate_id();

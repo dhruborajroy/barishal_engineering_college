@@ -115,7 +115,7 @@ include("header.php");
    </div>
    
    <!-- Line Chart Here -->
-   <!-- <div class="col-12 col-xl-8 col-6-xxxl">
+   <div class="col-12 col-xl-8 col-6-xxxl">
       <div class="card dashboard-card-one pd-b-20">
             <div class="card-body">
                <div class="heading-layout1">
@@ -134,21 +134,11 @@ include("header.php");
                </div>
                <div class="earning-report">
                   <div class="item-content">
-                        <div class="single-item pseudo-bg-blue">
-                           <h4>Total Collections</h4>
-                           <span>75,000</span>
-                        </div>
                         <div class="single-item pseudo-bg-red">
-                           <h4>Fees Collection</h4>
-                           <span>15,000</span>
+                           <h4>Students of Civil Engineering</h4>
                         </div>
-                  </div>
-                  <div class="dropdown">
-                        <a class="date-dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Jan 20, 2019</a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                           <a class="dropdown-item" href="#">Jan 20, 2019</a>
-                           <a class="dropdown-item" href="#">Jan 20, 2021</a>
-                           <a class="dropdown-item" href="#">Jan 20, 2020</a>
+                        <div class="single-item pseudo-bg-blue">
+                           <h4>Students of EEE</h4>
                         </div>
                   </div>
                </div>
@@ -157,7 +147,7 @@ include("header.php");
                </div>
             </div>
       </div>
-   </div> -->
+   </div>
    <!-- Bar Chart Here -->
    <div class="col-12 col-xl-9 col-9-xxxl">
       <div class="card dashboard-card-two pd-b-20">

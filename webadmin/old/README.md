@@ -1,1 +1,0 @@
-# bec-hall-management-system

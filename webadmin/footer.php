@@ -49,7 +49,7 @@
 <!-- Custom Js -->
 <script src="js/main.js"></script>
 <script src="js/custom.php"></script>
-<script src="js/validation.php"></script>
+<!-- <script src="js/validation.php"></script> -->
 
 <script>
       $('.full_input').summernote({

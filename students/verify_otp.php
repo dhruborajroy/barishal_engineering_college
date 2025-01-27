@@ -26,6 +26,7 @@ if (isset($_POST['verify'])) {
         $_SESSION['USER_LOGIN'] = true;
         $_SESSION['USER_ID'] = $user_id;
         $_SESSION['USER_EMAIL'] = $email;
+        $_SESSION['USER_NAME'] = $_SESSION['OTP_USER_NAME'] ;
 
         // Delete OTP after successful verification
         mysqli_query($con, "DELETE FROM otp_verification WHERE user_id='$user_id'");

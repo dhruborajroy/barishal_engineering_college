@@ -2,7 +2,7 @@
 
 if (!defined('SECURE_ACCESS')) {
 	die("Direct access not allowed!");
-  }
+}
 require('connection.inc.php');
 
 

@@ -176,6 +176,86 @@ function getTotalNotice(){
 
 
 
+function getDeptStudentCount($dept_id){
+	global $con;
+	// SQL Query
+	$sql = "SELECT 
+	b.id AS batch_id, 
+	b.name AS batch_name, 
+	COALESCE(COUNT(s.id), 0) AS student_count  
+	FROM batch b
+	LEFT JOIN students s ON b.id = s.batch AND s.dept_id = $dept_id
+	WHERE 1
+	GROUP BY b.id, b.name
+	ORDER BY b.id ASC";
+
+	$result = mysqli_query($con, $sql);
+
+	$batches = []; // Initialize array
+
+	// Fetch data
+	if ($result) {
+	while ($row = mysqli_fetch_assoc($result)) {
+	$batches[] = $row;
+	}
+	mysqli_free_result($result);
+	} else {
+	echo "Error: " . mysqli_error($con);
+	}
+
+
+	// Display results
+	$batchNames = [];
+	$studentCounts = [];
+
+	foreach ($batches as $batch) {
+	$batchNames[] = '"Batch ' . str_pad($batch['batch_name'], 2, "0", STR_PAD_LEFT) . '"';
+	$studentCounts[] = $batch['student_count'];
+	}
+
+	implode(", ", $batchNames) . "<br>";
+	return  implode(", ", $studentCounts);
+}
+
+function getDeptBatchList($dept_id){
+	global $con;
+	// SQL Query
+	$sql = "SELECT 
+	b.id AS batch_id, 
+	b.name AS batch_name, 
+	COALESCE(COUNT(s.id), 0) AS student_count  
+	FROM batch b
+	LEFT JOIN students s ON b.id = s.batch AND s.dept_id = 1
+	WHERE 1
+	GROUP BY b.id, b.name
+	ORDER BY b.id ASC";
+
+	$result = mysqli_query($con, $sql);
+
+	$batches = []; // Initialize array
+
+	// Fetch data
+	if ($result) {
+	while ($row = mysqli_fetch_assoc($result)) {
+	$batches[] = $row;
+	}
+	mysqli_free_result($result);
+	} else {
+	echo "Error: " . mysqli_error($con);
+	}
+
+	// Display results
+	$batchNames = [];
+	$studentCounts = [];
+
+	foreach ($batches as $batch) {
+	$batchNames[] = '"Batch ' . str_pad($batch['batch_name'], 2, "0", STR_PAD_LEFT) . '"';
+	$studentCounts[] = $batch['student_count'];
+	}
+
+	return  implode(", ", $batchNames);
+}
+
 
 
 function send_email_using_tamplate($name,$otp){

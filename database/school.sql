@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2025 at 09:06 AM
+-- Generation Time: Jan 27, 2025 at 12:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -180,8 +180,7 @@ CREATE TABLE `dept_sliders` (
 INSERT INTO `dept_sliders` (`id`, `image`, `title`, `dept`, `sub_title`, `button_text`, `button_link`, `added_by`, `added_on`, `updated_on`, `status`) VALUES
 ('67939eafd3ade', '1737727663.jpg', '', 'CE', '', '', '', '1', '1737727663', '1737727976', 1),
 ('67939ec1e574b', '1737727681.jpg', '', 'EEE', '', '', '', '1', '1737727681', '', 1),
-('67939ece0c034', '1737727694.jpg', '', 'GSH', '', '', '', '1', '1737727694', '1737727847', 1),
-('6794cee7d17f4', '1737805543.jpg', '', 'EEE', '', '', '', '1', '1737805543', '', 1);
+('67939ece0c034', '1737727694.jpg', '', 'GSH', '', '', '', '1', '1737727694', '1737727847', 1);
 
 -- --------------------------------------------------------
 
@@ -290,7 +289,9 @@ INSERT INTO `lab_list` (`id`, `name`, `name_bn`, `dept_id`, `status`) VALUES
 (13, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '7', 1),
 (14, 'Structural Engineering Labratory', ' ', '2', 1),
 (15, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '7', 1),
-(16, 'Structural Engineering Labratory', ' ', '4', 1);
+(16, 'Structural Engineering Labratory', ' ', '4', 1),
+(17, 'Surveying', 'সার্ভেইং ', '1', 1),
+(18, 'সদফ', 'সদফ', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -362,7 +363,8 @@ INSERT INTO `login_logs` (`id`, `admin_id`, `email`, `ip_address`, `status`, `ti
 (35, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:56:47'),
 (36, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 09:05:00'),
 (37, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 09:47:26'),
-(38, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 14:01:45');
+(38, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 14:01:45'),
+(39, NULL, 'dhruborajroy3@gmail.com', '::1', 'Failed', '2025-01-27 15:41:35');
 
 -- --------------------------------------------------------
 
@@ -702,7 +704,7 @@ INSERT INTO `students` (`id`, `name`, `class_roll`, `reg_no`, `session`, `fName`
 (1, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '3', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
 (4, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '1', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1),
 (5, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '4', '4', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'thedhruborajroy@gmail.com', '1737740643.jpg', 1),
-(6, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '2', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid2002@gmail.com', '1737740649.jpg', 1),
+(6, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '3', '2', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid2002@gmail.com', '1737740649.jpg', 1),
 (7, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '1', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
 (8, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '6', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1),
 (9, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '4', '5', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
@@ -946,25 +948,25 @@ ALTER TABLE `general_info`
 -- AUTO_INCREMENT for table `lab_list`
 --
 ALTER TABLE `lab_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `otp_verification`
 --
 ALTER TABLE `otp_verification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `services`

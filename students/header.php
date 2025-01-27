@@ -148,14 +148,14 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="../images/students/<?php echo $_SESSION['IMAGE']?>" alt="<?php echo $_SESSION['USER_NAME']?>" />
+                                                        <img src="../images/students/<?php //echo $_SESSION['IMAGE']?>" alt="<?php echo $_SESSION['USER_NAME']?>" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
                                                         <a href="#"><?php echo $_SESSION['USER_NAME']?></a>
                                                     </h5>
-                                                    <span class="email"><?php echo $_SESSION['EMAIL']?></span>
+                                                    <span class="email"><?php echo $_SESSION['USER_EMAIL']?></span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">

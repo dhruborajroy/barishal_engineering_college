@@ -58,6 +58,7 @@ if(isset($_POST['submit'])){
                     // Store user ID for verification
                     $_SESSION['OTP_USER_ID'] = $row['id'];
                     $_SESSION['OTP_USER_EMAIL'] = $email;
+                    $_SESSION['OTP_USER_NAME'] = $row['name'];
                     header("Location: verify_otp.php");
                     exit();
                 } else {
@@ -133,6 +134,8 @@ if(isset($_POST['submit'])){
                         <div class="login-form">
                             <?php echo $msg?>
                             <form method="post">
+                                <span id="error"></span>
+
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" required name="email" placeholder="Email">
@@ -149,7 +152,7 @@ if(isset($_POST['submit'])){
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" name="submit" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" name="submit" type="submit" onclick="submit()">sign in</button>
                             </form>
                             <!-- <div class="register-link">
                                 <p>
@@ -193,3 +196,18 @@ if(isset($_POST['submit'])){
 
 </html>
 <!-- end document-->
+ <script>
+    
+    function submit(){
+        jQuery('#error').html("");
+        var email=jQuery('#email').val();
+        var password=jQuery('#password').val();
+        if(email==""){
+            jQuery('#error').html("Please Enter Email");
+        }elesif(password==""){
+            jQuery('#error').html("Please Enter password");
+        }else{
+            jQuery('.au-btn').html("please wait...");
+        }
+    }
+ </script>

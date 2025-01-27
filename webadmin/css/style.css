@@ -3354,6 +3354,7 @@ ul {
   right: 0;
   height: 100%;
   width: 100%;
+  background-size: cover;
 }
 @media only screen and (max-width: 1024px) {
   .login-page-wrap {
