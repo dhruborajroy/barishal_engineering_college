@@ -3,13 +3,15 @@ define('SECURE_ACCESS', true);
 include("header.php");
 if(isset($_GET['id']) && $_GET['id']!==""){
 	$id=get_safe_value($_GET['id']);
-    $swl="select services_request.*,services.name as service_name ,students.name as student_name,students.reg_no,batch.name as batch_name from services_request,students,services,batch  where (services_request.id)='$id' and students.id=services_request.student_id and services_request.type=services.id and students.batch=batch.id";
+    $swl="select services_request.*,services.name as service_name ,services.link as link,students.id as student_id,students.name as student_name,students.reg_no,batch.name as batch_name from services_request,students,services,batch  where (services_request.id)='$id' and students.id=services_request.student_id and services_request.type=services.id and students.batch=batch.id";
     $res=mysqli_query($con,$swl);
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
         $student_id=$row['student_id'];
         $student_name=$row['student_name'];
         $service_name=$row['service_name'];
+        $link=$row['link'];
+        $reg_no=$row['reg_no'];
         $batch_name=$row['batch_name'];
         $reason=$row['reason'];
         $type=$row['type'];
@@ -28,16 +30,17 @@ if(isset($_GET['id']) && $_GET['id']!==""){
       //   redirect("index.php");
     }
 }
+// $url=FRONT_SITE_PATH."/pdfreports/".$type"";
 ?>
 <div class="dashboard-content-one">
 <!-- Breadcubs Area Start Here -->
 <div class="breadcrumbs-area">
-   <h3>Notice board</h3>
+   <h3>Service Print</h3>
    <ul>
       <li>
          <a href="index.php">Home</a>
       </li>
-      <li>Notices </li>
+      <li>Service Print </li>
    </ul>
 </div>
 <!-- Breadcubs Area End Here -->
@@ -48,7 +51,7 @@ if(isset($_GET['id']) && $_GET['id']!==""){
          <div class="card-body">
             <div class="heading-layout1">
                <div class="item-title">
-                  <h3>Upload A Notice</h3>
+                  <h3>Service Status</h3>
                </div>
             </div>
             <form class="new-added-form" method="post" enctype="multipart/form-data">
@@ -116,11 +119,13 @@ if(isset($_GET['id']) && $_GET['id']!==""){
          <div class="card-body">
             <div class="heading-layout1">
                <div class="item-title">
-                  <h3>Notice Preview</h3>
+                  <h3>Service Preview</h3>
                </div>
             </div>
             <div class="notice-board-wrap">
-               <iframe id="pdfPreview" src="http://localhost/notice_files/6793d3b6749ca_1737774946.pdf" width="100%" height="750px" ></iframe>
+               <iframe id="pdfPreview" src="../pdfreports/<?php 
+                  echo $link.".php?student_id=".md5($student_id);
+               ?>" width="100%" height="750px" ></iframe>
             </div>
          </div>
       </div>

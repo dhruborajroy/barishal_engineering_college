@@ -23,12 +23,12 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>People</h3>
+        <h3>Labs</h3>
             <ul>
                 <li>
                     <a href="index.php">Home</a>
                 </li>
-                <li>All peoples</li>
+                <li>All Labs</li>
             </ul>
     </div>
     <!-- Breadcubs Area End Here -->
@@ -39,12 +39,12 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
         <div class="card-body">
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>All people' Data</h3>
+                    <h3>All Labs' Data</h3>
                 </div>
                 <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
-                        <a href="manage_depts"> <button type="submit"
-                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Departments</button>
+                        <a href="manage_labs"> <button type="submit"
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new lab</button>
                         </a>
                     </div>
                 </div>

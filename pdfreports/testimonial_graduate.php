@@ -16,6 +16,11 @@ if (isset($_GET['reg_no']) && $_GET['reg_no'] > 0) {
     $additional_sql = " and reg_no='$reg_no'";
 }
 
+if (isset($_GET['student_id']) && $_GET['student_id'] !="") {
+    $student_id = get_safe_value($_GET['student_id']);
+    $additional_sql = " and md5(students.id)='$student_id'";
+}
+
 $query = "SELECT students.name, students.fName, students.reg_no, batch.session FROM students,batch where batch.id=students.batch $additional_sql"; 
 $result = mysqli_query($con, $query);
 
@@ -90,7 +95,7 @@ while ($student = mysqli_fetch_assoc($result)) {
                 </p>
             </td>
         </tr>';
-    $qr_text = "http://mashallah.shop/BEC/notice_files/" . $student['reg_no'] . "_TESTIMONIAL.pdf";
+    $qr_text = FRONT_SITE_PATH."/notice_files/" . $student['reg_no'] . "_TESTIMONIAL.pdf";
     QRcode::png($qr_text, $filepath);
     $html .= '
         <tr>

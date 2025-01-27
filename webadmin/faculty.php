@@ -42,7 +42,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                 <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
                         <a href="manage_people"> <button type="submit"
-                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new about us</button>
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add people</button>
                         </a>
                     </div>
                 </div>

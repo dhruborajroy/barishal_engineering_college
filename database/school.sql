@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2025 at 07:10 PM
+-- Generation Time: Jan 27, 2025 at 09:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -123,10 +123,7 @@ INSERT INTO `depts_lab_list` (`id`, `name`, `image`, `name_bn`, `short_form`, `p
 (4, 'General Science & Humanities', 'gsh.jpg', 'জেনারেল সায়েন্স এন্ড হিউম্যানিটিস\r\n', 'GSH', 1, 1),
 (5, 'Hostels', '01.jpg', 'হোস্টেল সুপার', 'HS', 0, 1),
 (6, 'Cenreal Computer Center', '1737785513', 'সেন্ট্রাল কম্পিউটার সেন্টার', 'CCC', 0, 1),
-(7, 'Office', '01.jpg', 'অফিস', 'Office', 0, 1),
-(67947, 'Induys', '1737785645', 'উন্দন', 'IPE', 0, 1),
-(67948, 'Induys', ' 1737785290', 'উন্দন', 'IPE', 0, 1),
-(67949, 'Induys', ' 1737785387', 'উন্দন', 'IPE', 0, 1);
+(7, 'Office', '01.jpg', 'অফিস', 'Office', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -362,7 +359,10 @@ INSERT INTO `login_logs` (`id`, `admin_id`, `email`, `ip_address`, `status`, `ti
 (32, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:17'),
 (33, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:36'),
 (34, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:55:52'),
-(35, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:56:47');
+(35, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-25 19:56:47'),
+(36, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 09:05:00'),
+(37, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 09:47:26'),
+(38, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-26 14:01:45');
 
 -- --------------------------------------------------------
 
@@ -464,6 +464,20 @@ INSERT INTO `notice_referance` (`id`, `notice_id`, `referance_id`, `status`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `otp_verification`
+--
+
+CREATE TABLE `otp_verification` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `otp_code` varchar(6) NOT NULL,
+  `expires_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `people`
 --
 
@@ -543,6 +557,7 @@ INSERT INTO `referances` (`id`, `name`, `priority`, `status`) VALUES
 CREATE TABLE `services` (
   `id` int(3) NOT NULL,
   `name` text NOT NULL,
+  `link` varchar(55) NOT NULL,
   `status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -550,15 +565,15 @@ CREATE TABLE `services` (
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`id`, `name`, `status`) VALUES
-(1, 'Testimonial(Running Student)', 1),
-(2, 'Testimonial(Graduate Student)', 1),
-(3, 'Medium of Instruction(MOI)', 1),
-(4, 'Recomendation Letter', 1),
-(5, 'Hall Clearance', 1),
-(6, 'Course Completion Certificate', 1),
-(7, 'Certificate Withdrawal', 1),
-(8, 'Character Certificate', 1);
+INSERT INTO `services` (`id`, `name`, `link`, `status`) VALUES
+(1, 'Testimonial(Running Student)', 'testimonial_current', 1),
+(2, 'Testimonial(Graduate Student)', 'testimonial_graduate', 1),
+(3, 'Medium of Instruction(MOI)', 'moi', 1),
+(4, 'Recomendation Letter', 'recomendation_letter', 1),
+(5, 'Hall Clearance', 'clearance', 1),
+(6, 'Course Completion Certificate', 'course_completion', 1),
+(7, 'Certificate Withdrawal', 'certificate_withdrawal', 1),
+(8, 'Character Certificate', 'character_certificate', 1);
 
 -- --------------------------------------------------------
 
@@ -572,6 +587,7 @@ CREATE TABLE `services_request` (
   `reason` text NOT NULL,
   `type` text NOT NULL,
   `public_access` int(3) NOT NULL,
+  `downloadable` int(2) NOT NULL,
   `added_on` int(10) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -580,9 +596,12 @@ CREATE TABLE `services_request` (
 -- Dumping data for table `services_request`
 --
 
-INSERT INTO `services_request` (`id`, `student_id`, `reason`, `type`, `public_access`, `added_on`, `status`) VALUES
-('6795032ef1555', '1', 'sdfdsvsdvs', '1', 0, 1737818926, '0'),
-('67952853d9584', '1', 'sdfdsf', '2', 0, 1737828435, '0');
+INSERT INTO `services_request` (`id`, `student_id`, `reason`, `type`, `public_access`, `downloadable`, `added_on`, `status`) VALUES
+('6795032ef1555', '1', 'sdfdsvsdvss', '1', 1, 1, 1737818926, 'Approved'),
+('67952853d9584', '1', 'sdfdsf', '2', 0, 0, 1737828435, 'Approved'),
+('6795f7618ee81', '1', 'dfgfdg', '4', 0, 0, 1737881441, 'Approved'),
+('6796691e6655f', '1', 'sdf', '1', 1, 1, 1737910558, 'Approved'),
+('67966a3f54eb3', '1', 'ki', '2', 0, 0, 1737910847, 'Approved');
 
 -- --------------------------------------------------------
 
@@ -680,8 +699,14 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `class_roll`, `reg_no`, `session`, `fName`, `mName`, `phoneNumber`, `presentAddress`, `permanentAddress`, `dob`, `gender`, `religion`, `bloodGroup`, `dept_id`, `batch`, `password`, `email`, `image`, `status`) VALUES
-(1, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '1', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
-(4, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '1', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1);
+(1, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '3', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
+(4, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '1', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1),
+(5, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '4', '4', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'thedhruborajroy@gmail.com', '1737740643.jpg', 1),
+(6, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '2', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid2002@gmail.com', '1737740649.jpg', 1),
+(7, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '1', '1', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
+(8, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '6', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1),
+(9, 'Dhruboraj Roy4', '2001304', '862', '', 'D4', 'M4', '017059272574', 'Adarsopara, Sadar, Lalmonirhat', '114', '08/01/2025', 'Female', 'Hinduism', 'A+', '4', '5', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', 'dhruborajroy3@gmail.com', '1737740643.jpg', 1),
+(10, 'Dhruboraj Roy', '3704923', '835', '', 'Asd', 'Asd', '0', 'Adarsopara, Sadar, Lalmonirhat', 'sdf', '17/01/2025', 'Male', 'Islam', 'A+', '2', '2', '$2y$10$609IBIfAj2xz9oJIUDNnt.X.ioM4VY26Z0omxMZNzrQ7GT9L4quLm', 'nhjahid202@gmail.com', '1737740649.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -835,6 +860,13 @@ ALTER TABLE `notice`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `otp_verification`
+--
+ALTER TABLE `otp_verification`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `people`
 --
 ALTER TABLE `people`
@@ -926,7 +958,13 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `otp_verification`
+--
+ALTER TABLE `otp_verification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -938,13 +976,23 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `useful_links`
 --
 ALTER TABLE `useful_links`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `otp_verification`
+--
+ALTER TABLE `otp_verification`
+  ADD CONSTRAINT `otp_verification_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -175,7 +175,7 @@ define('SECURE_ACCESS', true);
    <div class="card-body">
       <div class="heading-layout1">
          <div class="item-title">
-            <h3>Create A Faculty Profile</h3>
+            <h3>Create A Profile</h3>
          </div>
       </div>
       <form id="validate" class="new-added-form" method="post"  enctype="multipart/form-data">

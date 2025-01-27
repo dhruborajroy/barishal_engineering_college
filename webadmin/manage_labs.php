@@ -42,7 +42,7 @@ if(isset($_POST['submit'])){
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            redirect('./labs');
+            // redirect('./labs');
         }else{
             echo $sql;
         }
@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            redirect('./labs');
+            // redirect('./labs');
         }else{
             echo $sql;
         }
@@ -67,12 +67,12 @@ if(isset($_POST['submit'])){
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Notice board</h3>
+        <h3>Labs</h3>
         <ul>
             <li>
                 <a href="index.php">Home</a>
             </li>
-            <li>Notices </li>
+            <li>Labs </li>
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Create A Notice</h3>
+                            <h3>Create A lab</h3>
                         </div>
                     </div>
                     <form id="validate" class="new-added-form" method="post">

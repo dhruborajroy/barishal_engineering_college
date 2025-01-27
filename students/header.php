@@ -79,6 +79,10 @@
                                 <i class="fas  fa-certificate"></i>Services</a>
                         </li>
                         <li>
+                            <a href="request_services">
+                                <i class="fas  fa-certificate"></i>Request Services</a>
+                        </li>
+                        <li>
                             <a href="profile">
                                 <i class="fas fa-chart-bar"></i>Profile</a>
                         </li>
@@ -107,6 +111,10 @@
                         <li>
                             <a href="services">
                                 <i class="fas  fa-certificate"></i>Services</a>
+                        </li>
+                        <li>
+                            <a href="request_services">
+                                <i class="fas  fa-certificate"></i>Request Services</a>
                         </li>
                         <li>
                             <a href="profile">

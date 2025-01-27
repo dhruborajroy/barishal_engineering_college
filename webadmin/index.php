@@ -114,6 +114,50 @@ include("header.php");
       </div>
    </div>
    
+   <!-- Line Chart Here -->
+   <!-- <div class="col-12 col-xl-8 col-6-xxxl">
+      <div class="card dashboard-card-one pd-b-20">
+            <div class="card-body">
+               <div class="heading-layout1">
+                  <div class="item-title">
+                        <h3>Earnings</h3>
+                  </div>
+                  <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">...</a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                           <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                           <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                           <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                        </div>
+                  </div>
+               </div>
+               <div class="earning-report">
+                  <div class="item-content">
+                        <div class="single-item pseudo-bg-blue">
+                           <h4>Total Collections</h4>
+                           <span>75,000</span>
+                        </div>
+                        <div class="single-item pseudo-bg-red">
+                           <h4>Fees Collection</h4>
+                           <span>15,000</span>
+                        </div>
+                  </div>
+                  <div class="dropdown">
+                        <a class="date-dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Jan 20, 2019</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                           <a class="dropdown-item" href="#">Jan 20, 2019</a>
+                           <a class="dropdown-item" href="#">Jan 20, 2021</a>
+                           <a class="dropdown-item" href="#">Jan 20, 2020</a>
+                        </div>
+                  </div>
+               </div>
+               <div class="earning-chart-wrap"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                  <canvas id="earning-line-chart" width="722" height="320" class="chartjs-render-monitor" style="display: block; width: 722px; height: 320px;"></canvas>
+               </div>
+            </div>
+      </div>
+   </div> -->
    <!-- Bar Chart Here -->
    <div class="col-12 col-xl-9 col-9-xxxl">
       <div class="card dashboard-card-two pd-b-20">
@@ -165,11 +209,11 @@ include("header.php");
       </div>
    </div>
 </div>
-<!-- Dashboard summery End Here -->
- 
-<!-- Dashboard Content Start Here -->
+
 <div class="row gutters-20">
-   <div class="col-lg-12 col-xl-12 col-12-xxxl">
+   <!-- notice -->
+    
+   <div class="col-lg-12 col-xl-6 col-6-xxxl">
       <div class="card dashboard-card-six pd-b-20">
          <div class="card-body">
             <div class="heading-layout1 mg-b-17">
@@ -209,6 +253,38 @@ include("header.php");
          </div>
       </div>
    </div>
+<!-- calender started -->
+   <div class="col-12 col-xl-6 col-6-xxxl">
+      <div class="card dashboard-card-four pd-b-20">
+            <div class="card-body">
+               <div class="heading-layout1">
+                  <div class="item-title">
+                        <h3>BEC Calender</h3>
+                  </div>
+                  <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                           aria-expanded="false">...</a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                           <a class="dropdown-item" href="#"><i
+                                    class="fas fa-times text-orange-red"></i>Close</a>
+                           <a class="dropdown-item" href="#"><i
+                                    class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                           <a class="dropdown-item" href="#"><i
+                                    class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                        </div>
+                  </div>
+               </div>
+               <div class="calender-wrap">
+                  <div id="fc-calender" class="fc-calender"></div>
+               </div>
+            </div>
+      </div>
+   </div>
+<!-- Dashboard summery End Here -->
+</div>
+<!-- Dashboard Content Start Here -->
+<div class="row gutters-20">
 </div>
 <!-- Dashboard Content End Here -->
 

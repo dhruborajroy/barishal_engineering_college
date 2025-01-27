@@ -60,7 +60,7 @@ isAdmin();
          <div class="nav-bar-header-one">
             <div class="header-logo">
                <a href="index.php">
-               <img src="img/logo.png" alt="logo" width="172px">
+               <img src="../images/logo.png" alt="logo" width="172px">
                </a>
             </div>
             <div class="toggle-button sidebar-toggle">
@@ -192,7 +192,7 @@ isAdmin();
       <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color">
          <div class="mobile-sidebar-header d-md-none">
             <div class="header-logo">
-               <a href="index.php"><img src="<?php FRONT_SITE_PATH?>/hall/img/logo1.png" alt="logo"></a>
+               <a href="index.php"><img src="../images/logo.png" alt="logo"></a>
             </div>
          </div>
          <div class="sidebar-menu-content">
@@ -220,12 +220,12 @@ isAdmin();
                   <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
                   <li class="nav-item">
                         <a href="menus"
-                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="nav-link "><i
                            class="fas fa-angle-right"></i>Menus</a>
                      </li>
                      <li class="nav-item">
                         <a href="manage_menus"
-                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="nav-link "><i
                            class="fas fa-angle-right"></i>Add New Menu</a>
                      </li>
                   </ul>
@@ -235,12 +235,12 @@ isAdmin();
                   <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
                   <li class="nav-item">
                         <a href="departments"
-                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="nav-link "><i
                            class="fas fa-angle-right"></i>Departments</a>
                      </li>
                      <li class="nav-item">
                         <a href="labs"
-                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="nav-link "><i
                            class="fas fa-angle-right"></i>Labs</a>
                      </li>
                   </ul>
@@ -250,12 +250,12 @@ isAdmin();
                   <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
                   <li class="nav-item">
                         <a href="service_requests"
-                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="nav-link "><i
                            class="fas fa-angle-right"></i>services_request</a>
                      </li>
                      <li class="nav-item">
                         <a href="labs"
-                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="nav-link "><i
                            class="fas fa-angle-right"></i>Labs</a>
                      </li>
                   </ul>
@@ -311,12 +311,6 @@ isAdmin();
                            class="fas fa-angle-right"></i>All
                            Referances</a>
                      </li>
-                     <li class="nav-item">
-                        <a href="manage_subjects"
-                           class="nav-link "><i
-                           class="fas fa-angle-right"></i>
-                           Manage Subjects</a>
-                     </li>
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
@@ -328,16 +322,10 @@ isAdmin();
                            class="fas fa-angle-right"></i>All
                            BEC Gneral Infos</a>
                      </li>
-                     <li class="nav-item">
-                        <a href="manage_subjects"
-                           class="nav-link "><i
-                           class="fas fa-angle-right"></i>
-                           Manage Subjects</a>
-                     </li>
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>faculty</span></a>
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Faculty & Staffs</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">
                         <a href="faculty"
@@ -378,12 +366,6 @@ isAdmin();
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>All
                            testimonials</a>
-                     </li>
-                     <li class="nav-item">
-                        <a href="manage_subjects"
-                           class="nav-link "><i
-                           class="fas fa-angle-right"></i>
-                           Manage Subjects</a>
                      </li>
                   </ul>
                </li>

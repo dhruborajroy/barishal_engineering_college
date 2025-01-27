@@ -5,12 +5,12 @@ include("header.php");
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Noticeboard</h3>
+        <h3>BEC General Infos</h3>
         <ul>
             <li>
                 <a href="index.php">Home</a>
             </li>
-            <li>Notice</li>
+            <li>BEC General Infos</li>
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->
