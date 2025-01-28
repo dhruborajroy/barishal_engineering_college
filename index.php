@@ -114,7 +114,7 @@
                   <i class="flaticon-team-1"></i>
                </div>
                <div class="counter-content">
-                  <span class="timer" data-to="600" data-speed="10000">600</span>
+                  <span class="timer" data-to="<?php echo $gettotalstudent=gettotalstudent()?>" data-speed="100"><?php echo $gettotalstudent?></span>
                   <label>Students</label>
                </div>
             </div>
@@ -125,7 +125,7 @@
                   <i class="flaticon-diploma-1"></i>
                </div>
                <div class="counter-content align-self-center">
-                  <span class="timer" data-to="45" data-speed="10">45</span>
+                  <span class="timer" data-to="<?php echo $gettotalcount=gettotalcount("faculty")?>" data-speed="10"><?php echo $gettotalcount?></span>
                   <label>Teachers</label>
                </div>
             </div>
@@ -136,7 +136,7 @@
                   <i class="flaticon-support"></i>
                </div>
                <div class="counter-content">
-                  <span class="timer" data-to="491" data-speed="10000">491</span>
+                  <span class="timer" data-to="200" data-speed="10000">200</span>
                   <label>Graduates</label>
                </div>
             </div>

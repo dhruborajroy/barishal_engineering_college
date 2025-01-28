@@ -11,6 +11,7 @@ require('connection.inc.php');
 
 define('FRONT_SITE_PATH','http://localhost/');
 define('SLIDER_IMAGE',FRONT_SITE_PATH."/images/sliders/");
+define('TESTIMONIAL_DOWNLOAD_LINK',FRONT_SITE_PATH."/testimonials/");
 define('DEPT_SLIDER_IMAGE',FRONT_SITE_PATH."/images/dept/sliders/");
 define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/sliders/");
 define('UPLOAD_DEPT_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/dept/sliders/");

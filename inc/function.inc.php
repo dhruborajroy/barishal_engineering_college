@@ -143,6 +143,7 @@ function getUsers(){
 	  return $row['number'];
 	}
 } 
+
 function gettotalstudent($gender=""){
 	global $con;
     $add_sql="";
@@ -155,6 +156,7 @@ function gettotalstudent($gender=""){
 	  return $row['student'];
 	}
 }
+
 function gettotalcount($type){
 	global $con;
 	$sql="SELECT count(DISTINCT id) as people FROM people where type='$type'";

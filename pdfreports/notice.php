@@ -117,17 +117,6 @@ if(mysqli_num_rows($res)>0){
 $mpdf=new \Mpdf\Mpdf([
     'tempDir' => __DIR__ . '/custom',
     'default_font_size' => 12,
-    'fontDir' => array_merge((new Mpdf\Config\ConfigVariables())->getDefaults()['fontDir'], [
-        __DIR__ . '/fonts',
-    ]),
-    'fontdata' => array_merge((new Mpdf\Config\FontVariables())->getDefaults()['fontdata'], [
-        'roboto' => [
-            'R' => 'Roboto-Regular.ttf',
-            'B' => 'Roboto-Bold.ttf',
-            'I' => 'Roboto-Italic.ttf',
-            'BI' => 'Roboto-BoldItalic.ttf',
-        ]
-    ]),
     'default_font' => 'FreeSerif',
 	'margin_left' => 20,
 	'margin_right' => 20,

@@ -21,19 +21,19 @@ include("header.php");
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Testimonials</h3>
+                            <h3>Medium of Instruction</h3>
                         </div>
                     </div>
-                    <form class="new-added-form" action="../pdfreports/moi.php">
+                    <form class="new-added-form" action="../pdfreports/moi.php" target="_blank">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
                                 <label>Student *</label>
-                                <select class="form-control select2" name="reg_no">
+                                <select class="form-control select2" name="student_id">
                                     <option>Select Student</option>
                                     <?php
                                     $res=mysqli_query($con,"SELECT * FROM `students` ");
                                     while($row=mysqli_fetch_assoc($res)){
-                                        echo "<option value=".$row['reg_no'].">".$row['name']."(".$row['reg_no'].")</option>";                                                        
+                                        echo "<option value=".md5($row['id']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
                                     }
                                     ?>
                                 </select>
@@ -41,7 +41,7 @@ include("header.php");
                             <div class="col-6 form-group mg-t-8">
                                 <label></label>
                                 <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Generate</button>
-                                <a href="../pdfreports/testimonial.php" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
+                                <a target="_blank"  href="../pdfreports/moi.php?student_id=all" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
                             </div>
                         </div>
                     </form>
@@ -53,19 +53,19 @@ include("header.php");
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Generate Monthly Bill</h3>
+                            <h3>Clearance</h3>
                         </div>
                     </div>
-                    <form class="new-added-form" action="../pdfreports/testimonial.php">
+                    <form class="new-added-form" action="../pdfreports/clearance_all.php" target="_blank">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
                                 <label>Student *</label>
-                                <select class="form-control select2" name="reg_no">
+                                <select class="form-control select2" name="student_id">
                                     <option>Select Student</option>
                                     <?php
                                     $res=mysqli_query($con,"SELECT * FROM `students` ");
                                     while($row=mysqli_fetch_assoc($res)){
-                                        echo "<option value=".$row['reg_no'].">".$row['name']."(".$row['reg_no'].")</option>";                                                        
+                                        echo "<option value=".md5($row['id']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
                                     }
                                     ?>
                                 </select>
@@ -73,7 +73,7 @@ include("header.php");
                             <div class="col-6 form-group mg-t-8">
                                 <label></label>
                                 <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Generate</button>
-                                <a href="../pdfreports/testimonial.php" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
+                                <a target="_blank"  href="../pdfreports/moi.php?student_id=all" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
                             </div>
                         </div>
                     </form>
@@ -85,19 +85,19 @@ include("header.php");
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Generate Monthly Bill</h3>
+                            <h3>Testimonials For Currently Studying Students</h3>
                         </div>
                     </div>
-                    <form class="new-added-form" action="../pdfreports/testimonial.php">
+                    <form class="new-added-form" action="../pdfreports/testimonial_current.php" target="_blank">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
                                 <label>Student *</label>
-                                <select class="form-control select2" name="reg_no">
+                                <select class="form-control select2" name="student_id">
                                     <option>Select Student</option>
                                     <?php
                                     $res=mysqli_query($con,"SELECT * FROM `students` ");
                                     while($row=mysqli_fetch_assoc($res)){
-                                        echo "<option value=".$row['reg_no'].">".$row['name']."(".$row['reg_no'].")</option>";                                                        
+                                        echo "<option value=".md5($row['id']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
                                     }
                                     ?>
                                 </select>
@@ -105,7 +105,39 @@ include("header.php");
                             <div class="col-6 form-group mg-t-8">
                                 <label></label>
                                 <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Generate</button>
-                                <a href="../pdfreports/testimonial.php" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
+                                <a target="_blank" href="../pdfreports/testimonial_current?student_id=all" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12-xxxl col-12">
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>Testimonials For Graduate Students</h3>
+                        </div>
+                    </div>
+                    <form target="_blank" class="new-added-form" action="../pdfreports/testimonial_graduate.php">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Student *</label>
+                                <select class="form-control select2" name="student_id">
+                                    <option>Select Student</option>
+                                    <?php
+                                    $res=mysqli_query($con,"SELECT * FROM `students` ");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        echo "<option value=".md5($row['reg_no']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-6 form-group mg-t-8">
+                                <label></label>
+                                <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Generate</button>
+                                <a target="_blank"  href="../pdfreports/testimonial_graduate?student_id=all" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
                             </div>
                         </div>
                     </form>

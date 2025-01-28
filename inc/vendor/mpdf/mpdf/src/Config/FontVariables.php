@@ -248,6 +248,20 @@ class FontVariables
 					'R' => "damase_v.2.ttf",
 				],
 				/* Indic */
+				"nikosh" => [
+					'R' => "Nikosh.ttf",
+					'B' => "Nikosh.ttf",
+					'I' => "Nikosh.ttf",
+					'BI' => "Nikosh.ttf",
+					'useOTL' => 0xFF,
+				],
+				"ShonarBangla" => [
+					'R' => "Shonar.ttf",
+					'B' => "Shonarb.ttf",
+					'I' => "Shonar.ttf",
+					'BI' => "Shonarb.ttf",
+					'useOTL' => 0xFF,
+				],
 				"lohitkannada" => [
 					'R' => "Lohit-Kannada.ttf",
 					'useOTL' => 0xFF,
