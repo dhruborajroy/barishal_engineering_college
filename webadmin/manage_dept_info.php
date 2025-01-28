@@ -32,55 +32,41 @@ if(isset($_GET['dept_id']) && $_GET['dept_id']!==""){
     }
 }
 if(isset($_POST['submit'])){
-	$title=get_safe_value($_POST['title']);
-	$details=get_safe_value($_POST['details']);
-    $user_id=$_SESSION['ADMIN_ID'];
-    $added_on=time();
-   if($id==''){
-        $id=uniqid();
-        $sql="INSERT INTO `dept_general_info` (`id`, `dept_id`, `dept_publication`, `dept_research`, `dept_scholarships`, `dept_about`, `dept_vision_mission`, `dept_head_msg`, `dept_booklet`, `status`) VALUES 
-                                            ('$id', '$dept_id', '$dept_publication', '$dept_research', '$dept_scholarships', '$dept_about', '$dept_vision_mission', '$dept_head_msg', '$dept_booklet', 'active')";
-        if(mysqli_query($con,$sql)){
-            $_SESSION['TOASTR_MSG']=array(
-                'type'=>'success',
-                'body'=>'Data Inserted',
-                'title'=>'Success',
-            );
-            // redirect('./about_us');
-        }else{
-            echo $sql;
-        }
+	$dept_publication=get_safe_value($_POST['dept_publication']);
+	$dept_research=get_safe_value($_POST['dept_research']);
+	$dept_scholarships=get_safe_value($_POST['dept_scholarships']);
+	$dept_about=get_safe_value($_POST['dept_about']);
+	$dept_vision_mission=get_safe_value($_POST['dept_vision_mission']);
+	$dept_head_msg=get_safe_value($_POST['dept_head_msg']);
+	$dept_booklet=get_safe_value($_POST['dept_booklet']);
+    $sql = "UPDATE dept_general_info 
+    SET  dept_publication = '$dept_publication', 
+        dept_research = '$dept_research', 
+        dept_scholarships = '$dept_scholarships', 
+        dept_about = '$dept_about', 
+        dept_vision_mission = '$dept_vision_mission', 
+        dept_head_msg = '$dept_head_msg', 
+        dept_booklet = '$dept_booklet'
+    WHERE md5(dept_id) = '$dept_id'";
+    if(mysqli_query($con,$sql)){
+        $_SESSION['TOASTR_MSG']=array(
+            'type'=>'success',                
+            'body'=>'Data Updated',
+            'title'=>'Success',
+        );
+        echo $sql;  
+        // redirect('./about_us_contents');
     }else{
-        $updated_on=time();
-        $sql = "UPDATE dept_general_info 
-        SET dept_id = '$dept_id', 
-            dept_publication = '$dept_publication', 
-            dept_research = '$dept_research', 
-            dept_scholarships = '$dept_scholarships', 
-            dept_about = '$dept_about', 
-            dept_vision_mission = '$dept_vision_mission', 
-            dept_head_msg = '$dept_head_msg', 
-            dept_booklet = '$dept_booklet', 
-            status = 'active'
-        WHERE md5(id) = '$dept_id'";
-        if(mysqli_query($con,$sql)){
-            $_SESSION['TOASTR_MSG']=array(
-                'type'=>'success',                
-                'body'=>'Data Updated',
-                'title'=>'Success',
-            );
-            // redirect('./about_us');
-        }else{
-            echo $sql;
-        }
+        echo $sql;
     }
+    // echo $sql;
 }
 
 ?>
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Notice board</h3>
+        <h3>Department Infos</h3>
         <ul>
             <li>
                 <a href="index.php">Home</a>

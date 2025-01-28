@@ -30,7 +30,7 @@ while($row=mysqli_fetch_assoc($res)){
          </div>
          <div class="dropdown">
                <a href="manage_dept_info?dept_id=<?php echo md5( $row['dept_id'])?>"> <button type="submit"
-                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Slider</button>
+                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Edit <?php echo $row['dept_id']?> Dept Info</button>
                </a>
          </div>
       </div>

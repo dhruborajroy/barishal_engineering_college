@@ -18,6 +18,7 @@ $bloodGroup='';
 $image='';
 $email='';
 $batch='';
+$reg_no='';
 $deptId="";
 if(isset($_GET['id']) && $_GET['id']!=""){
 	$id=get_safe_value($_GET['id']);
@@ -54,6 +55,7 @@ if(isset($_POST['submit'])){
 	$class_roll=get_safe_value($_POST['roll']);
 	$fName=ucfirst(get_safe_value($_POST['fName']));
 	$mName=ucfirst(get_safe_value($_POST['mName']));
+	$reg_no=ucfirst(get_safe_value($_POST['reg_no']));
 	$phoneNumber=get_safe_value($_POST['phoneNumber']);
 	$presentAddress=get_safe_value($_POST['presentAddress']);
 	$permanentAddress=get_safe_value($_POST['permanentAddress']);
@@ -91,24 +93,30 @@ if(isset($_POST['submit'])){
             }else{
                 if(isset($img)){
                     if (($_FILES["image"]["size"] > 300000)) {//2000000 = 2Mb
-                        $msg= "Image size exceeds 300 kb";
+                        $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
+                        Image size exceeds 300 kb.
+                    </div>";
                     }else{
                         $random_password=uniqid();
                         $password=password_hash($random_password,PASSWORD_DEFAULT);
                         $image=time().'.jpg';
                         move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_STUDENT_IMAGE.$image);
-                        $sql="INSERT INTO `students` (`name`,  `class_roll`,`fName`,  `mName`,  `phoneNumber`, `presentAddress`, `permanentAddress`, `dob`, `gender`, `religion`,  `bloodGroup`, `image`,`email`,`dept_id`,`batch`,`password`,`status`)
-                                                VALUES ( '$name', '$class_roll','$fName',  '$mName',  '$phoneNumber','$presentAddress','$permanentAddress','$dob','$gender','$religion','$bloodGroup','$image','$email','$dept_id','$batch','$password', 1)";
-                        send_email($email,"Your account has been created. Your password is <b>".$random_password." </b>. Please login and change your password <br>  ".FRONT_SITE_PATH."/students\/","Account Created");
-                        mysqli_query($con,$sql);
-                        $_SESSION['INSERT']=1;
-                        redirect("students.php");
+                        $sql="INSERT INTO `students` (`name`,  `class_roll`,`reg_no`,`fName`,  `mName`,  `phoneNumber`, `presentAddress`, `permanentAddress`, `dob`, `gender`, `religion`,  `bloodGroup`, `image`,`email`,`dept_id`,`batch`,`password`,`status`)
+                                                VALUES ( '$name', '$class_roll','$reg_no','$fName',  '$mName',  '$phoneNumber','$presentAddress','$permanentAddress','$dob','$gender','$religion','$bloodGroup','$image','$email','$dept_id','$batch','$password', 1)";
+                        if(mysqli_query($con,$sql)){
+                            $_SESSION['INSERT']=1;
+                            send_email($email,"Your account has been created. Your password is <b>".$random_password." </b>. Please login and change your password <br>  ".FRONT_SITE_PATH."/students\/","Account Created");
+                            redirect("students.php");
+
+                        }
                     }
                 }
                 
             }
         }else{
-            $msg= "Only select jpg or png image";
+            $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
+                        Only select jpg or png image
+                    </div>";
         }
     }else{
         if($_FILES['image']['name']!=''){
@@ -121,7 +129,9 @@ if(isset($_POST['submit'])){
                 }elseif($info['mime']=="image/png"){
                     $img=imagecreatefrompng($_FILES['image']['tmp_name']);
                 }else{
-                    $msg= "Only select jpg or png image";
+                    $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
+                        Only select jpg or png image
+                    </div>";
                 }
                 if(isset($img)){
                     if (($_FILES["image"]["size"] > 300000)) {//2000000 = 2Mb
@@ -130,21 +140,23 @@ if(isset($_POST['submit'])){
                         $image=time().'.jpg';
                         // $image=imagejpeg($img,$image,40);
                         move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_STUDENT_IMAGE.$image);
-                        $sql="update `students` set  `name`='$name',`class_roll`='$class_roll', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`bloodGroup`='$bloodGroup',`image`='$image', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
+                        $sql="update `students` set  `name`='$name',`class_roll`='$class_roll',`reg_no`='$reg_no', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`bloodGroup`='$bloodGroup',`image`='$image', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
                         mysqli_query($con,$sql);
                         $_SESSION['UPDATE']=1;
                         redirect("students.php");
                     }
                 }
             }else{
-                $msg= "Only select jpg or png image";
+                $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
+                        Only select jpg or png image
+                    </div>";
             }
         }else{
-            $sql="update `students` set  `name`='$name',`class_roll`='$class_roll', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`bloodGroup`='$bloodGroup', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
-
-            mysqli_query($con,$sql);
-            $_SESSION['UPDATE']=1;
-            redirect("students.php");
+            $sql="update `students` set  `name`='$name',`class_roll`='$class_roll',`reg_no`='$reg_no', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`bloodGroup`='$bloodGroup', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
+            if(mysqli_query($con,$sql)){
+                $_SESSION['UPDATE']=1;
+                redirect("students.php");
+            }
         }
     }
 
@@ -199,6 +211,11 @@ if(isset($_POST['submit'])){
                         <label>Phone Number *</label>
                         <input class="form-control"  placeholder="Phone Number" autocomplete="off" name="phoneNumber"
                             type="tel" required value="<?php echo $phoneNumber?>">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Dhaka University Registration Number *</label>
+                        <input class="form-control"  placeholder="DU Reg No" autocomplete="off" name="reg_no"
+                            type="number" required value="<?php echo $reg_no?>">
                     </div>
                     <div class="col-xl-3 col-lg-6 col-12 form-group">
                         <label>Email *</label>

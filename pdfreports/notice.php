@@ -98,7 +98,7 @@ if(mysqli_num_rows($res)>0){
                                     ORDER BY referances.priority ASC";
                     $notice_res = mysqli_query($con, $notice_sql);
                     if(mysqli_num_rows($notice_res)>0){
-                        $html .=  "<u style='font-family: roboto'>সদয় অবগতি ও প্রয়োজনীয় কার্যার্থে অনুলিপি(জেষ্ঠতার ভিত্তিতে নয়):</u>";
+                        $html .=  "<u >সদয় অবগতি ও প্রয়োজনীয় কার্যার্থে অনুলিপি(জেষ্ঠতার ভিত্তিতে নয়):</u>";
                     }
                     while ($notice_res_row = mysqli_fetch_assoc($notice_res)) {
                         $html .= '<li>' . $notice_res_row['name'] . '</li>';

@@ -1,3 +1,4 @@
+
 <?php 
 define('SECURE_ACCESS', true);
 include('header.php');
@@ -89,7 +90,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Deactive</a>
                                                 <?php }?>
-                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=dept_delete"><i
+                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=delete"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Delete</a>
                                     </div>
                                 </div>

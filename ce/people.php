@@ -1,16 +1,5 @@
 <?php 
 define('SECURE_ACCESS', true);
-session_start();
-if(!isset($_SESSION['DEPT_ID'])) {
-  header("Location: /"); // Redirect if no session and no dept_id in URL
-  exit();
-}else{
-  $dept_id=$_SESSION['DEPT_ID'];
-}
-if(!isset($_GET['type'])){
-    // header("Location: /");
-    die;
-}
 include("header.php");
 if(isset($_GET['type'])){
   $type=get_safe_value($_GET['type']);

@@ -27,7 +27,6 @@ if(isset($_POST['submit'])){
     $name=get_safe_value($_POST['name']);
     $name_bn=get_safe_value($_POST['name_bn']);
     $dept_id=get_safe_value($_POST['dept_id']);
-    $public_view=get_safe_value($_POST['public_view']);
     
     $user_id=$_SESSION['ADMIN_ID'];
     $added_on=time();
@@ -42,7 +41,7 @@ if(isset($_POST['submit'])){
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            // redirect('./labs');
+            redirect('./labs');
         }else{
             echo $sql;
         }

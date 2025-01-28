@@ -35,7 +35,7 @@ include("header.php");
                           <div class="row">
                             <div class="col-lg-3">
                               <div class="events-img mb-4 mb-lg-0">
-                                <img class="img-fluid border-0" src="images/events/<?php echo $news_res_row['image']?>" alt="">
+                                <img class="img-fluid border-0" src="images/news/<?php echo $news_res_row['image']?>" alt="">
                               </div>
                             </div>
                             <div class="col-lg-6 align-self-center">

@@ -89,7 +89,7 @@ include("header.php");
       </div>
    </div>
    <!-- Dougnut Chart Here -->
-   <div class="col-12 col-xl-6 col-3-xxxl">
+   <div class="col-12 col-xl-3 col-3-xxxl">
       <div class="card dashboard-card-three pd-b-20">
             <div class="card-body">
                <div class="heading-layout1">
@@ -115,7 +115,7 @@ include("header.php");
    </div>
    
    <!-- Line Chart Here -->
-   <div class="col-12 col-xl-8 col-6-xxxl">
+   <div class="col-12 col-xl-9 col-9-xxxl">
       <div class="card dashboard-card-one pd-b-20">
             <div class="card-body">
                <div class="heading-layout1">
@@ -149,7 +149,7 @@ include("header.php");
       </div>
    </div>
    <!-- Bar Chart Here -->
-   <div class="col-12 col-xl-9 col-9-xxxl">
+   <div class="col-12 col-xl-12 col-12-xxxl">
       <div class="card dashboard-card-two pd-b-20">
             <div class="card-body">
                <div class="heading-layout1">
@@ -202,7 +202,6 @@ include("header.php");
 
 <div class="row gutters-20">
    <!-- notice -->
-    
    <div class="col-lg-12 col-xl-6 col-6-xxxl">
       <div class="card dashboard-card-six pd-b-20">
          <div class="card-body">
@@ -227,9 +226,9 @@ include("header.php");
                      <?php echo get_time_ago(intval($row['added_on']));?>
                   </div>
                   <div class="post-date bg-orange">
-                     <a href="notice_files/<?php echo $row['link']?>" style="color:white">Generate Pdf</a>
+                     <a href="../notice_files/<?php echo $row['link']?>" style="color:white">Print Pdf</a>
                   </div>
-                  <h6 class="notice-title"><a href="notice_files/<?php echo $row['link']?>"><?php echo $row['title']?></a></h6>
+                  <h6 class="notice-title"><a href="../notice_files/<?php echo $row['link']?>"><?php echo $row['title']?></a></h6>
                   <div class="entry-meta"><?php echo $row['details']?></div>
                </div>
                <?php 
@@ -243,7 +242,7 @@ include("header.php");
          </div>
       </div>
    </div>
-<!-- calender started -->
+   <!-- calender  -->
    <div class="col-12 col-xl-6 col-6-xxxl">
       <div class="card dashboard-card-four pd-b-20">
             <div class="card-body">

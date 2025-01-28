@@ -83,7 +83,7 @@ $dept_id="ce";
                 <div class="col-sm-4">
                   <!-- logo -->
                   <a class="navbar-brand logo text-lg-center" href="./">
-                    <img src="../images/bec-<?php echo $dept_id?>.png" alt="Logo">
+                    <img src="../images/bec-ce.png" alt="Logo">
                   </a>
                 </div>
                 <div class="col-sm-8">

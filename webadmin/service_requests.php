@@ -23,12 +23,12 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>People</h3>
+        <h3>Service Requests</h3>
             <ul>
                 <li>
                     <a href="index.php">Home</a>
                 </li>
-                <li>All peoples</li>
+                <li>Service Requests</li>
             </ul>
     </div>
     <!-- Breadcubs Area End Here -->

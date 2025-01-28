@@ -4,7 +4,7 @@ define('SECURE_ACCESS', true);
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Noticeboard</h3>
+        <h3>Notices</h3>
         <ul>
             <li>
                 <a href="index.php">Home</a>

@@ -2,6 +2,7 @@
    define('SECURE_ACCESS', true);
    session_start();
    include("header.php");
+   $dept_id="ce";
    ?>
    
 <!--=================================Banner -->
