@@ -5,7 +5,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
-		mysqli_query($con,"delete from faculty where id='$id'");
+		mysqli_query($con,"delete from people where id='$id'");
 		redirect('faculty');
 	}
 	if($type=='active' || $type=='deactive'){
@@ -13,7 +13,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 		if($type=='deactive'){
 			$status=0;
 		}
-		mysqli_query($con,"update faculty set status='$status' where id='$id'");
+		mysqli_query($con,"update people set status='$status' where (id)='$id'");
         redirect('./faculty');
 	}
 

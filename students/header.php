@@ -1,14 +1,14 @@
 <?php
-    session_start();
-    if (!defined('SECURE_ACCESS')) {
-        die("You don't have permission to access the location");
-    }
-   require('../inc/constant.inc.php');
-   require('../inc/connection.inc.php');
-   require_once("../inc/smtp/class.phpmailer.php");
-   require('../inc/function.inc.php');
-   isUSER();
-   $user_id=$_SESSION['USER_ID'];
+session_start();
+if (!defined('SECURE_ACCESS')) {
+    die("You don't have permission to access the location");
+}
+require('../inc/constant.inc.php');
+require('../inc/connection.inc.php');
+require_once("../inc/smtp/class.phpmailer.php");
+require('../inc/function.inc.php');
+isUSER();
+$user_id=$_SESSION[ 'USER_ID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +79,10 @@
                                 <i class="fas  fa-certificate"></i>Services</a>
                         </li>
                         <li>
+                            <a href="cgpa_caltulator">
+                                <i class="fas  fa-certificate"></i>CGPA Calculator</a>
+                        </li>
+                        <li>
                             <a href="request_services">
                                 <i class="fas  fa-certificate"></i>Request Services</a>
                         </li>
@@ -111,6 +115,10 @@
                         <li>
                             <a href="services">
                                 <i class="fas  fa-certificate"></i>Services</a>
+                        </li>
+                        <li>
+                            <a href="cgpa_caltulator">
+                                <i class="fas  fa-certificate"></i>CGPA Calculator</a>
                         </li>
                         <li>
                             <a href="request_services">

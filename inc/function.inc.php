@@ -259,11 +259,12 @@ function getDeptBatchList($dept_id){
 
 
 function send_email_using_tamplate($name,$otp){
-	$tamplate= "email.php";
-	$file_content=file_get_contents("../email.php");
+	$tamplate= "../inc/email.php";
+	$file_content=file_get_contents("../inc/email.php");
 	$array=array(
 		"{YOUR_NAME}"=>$name,
 		"{OTP_NUMBER}"=>$otp,
+        "{DATE}"=>date("d M Y h:i"),
 	);
 	$keys = array_keys($array);
 	$values = array_values($array);

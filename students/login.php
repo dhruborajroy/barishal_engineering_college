@@ -8,6 +8,14 @@ require_once("../inc/smtp/class.phpmailer.php");
 
 $msg = "";
 
+// Fetch 2FA setting from the database
+$two_step_verification = 0;
+$settings_query = mysqli_query($con, "SELECT two_step_verification FROM site_details LIMIT 1");
+if ($settings_query && mysqli_num_rows($settings_query) > 0) {
+    $settings_row = mysqli_fetch_assoc($settings_query);
+    $two_step_verification = $settings_row['two_step_verification'];
+}
+
 if(isset($_POST['submit'])){
     $email = mysqli_real_escape_string($con, trim($_POST['email']));
     $password = trim($_POST['password']);
@@ -38,29 +46,40 @@ if(isset($_POST['submit'])){
 
             if($row['status'] != 1){
                 $msg = '<div class="alert alert-danger" role="alert">
-					You haven\'t verified your email yet. Please verify your email.				</div>';
+					You haven\'t verified your email yet. Please verify your email.</div>';
             } else {
                 if(password_verify($password, $row['password'])){
-                    // Generate OTP
-                    $otp = rand(100000, 999999);
-                    $expires_at = date('Y-m-d H:i:s', strtotime('+10 minutes'));
+                    
+                    if ($two_step_verification == 1) { // If 2FA is enabled
+                        // Generate OTP
+                        $otp = rand(100000, 999999);
+                        $expires_at = date('Y-m-d H:i:s', strtotime('+10 minutes'));
 
-                    // Save OTP in the database
-                    $query = "INSERT INTO otp_verification (user_id, email, otp_code, expires_at) 
-                              VALUES ('{$row['id']}', '$email', '$otp', '$expires_at') 
-                              ON DUPLICATE KEY UPDATE otp_code='$otp', expires_at='$expires_at'";
-                    mysqli_query($con, $query);
+                        // Save OTP in the database
+                        $query = "INSERT INTO otp_verification (user_id, email, otp_code, expires_at) 
+                                  VALUES ('{$row['id']}', '$email', '$otp', '$expires_at') 
+                                  ON DUPLICATE KEY UPDATE otp_code='$otp', expires_at='$expires_at'";
+                        mysqli_query($con, $query);
 
-                    // Send OTP via email
-                    $subject = "Your OTP Code for Login";
-                    $html = "<p>Your OTP code is: <b>$otp</b>. It is valid for 10 minutes.</p>";
-                    send_email($email, $html, $subject);
-                    // Store user ID for verification
-                    $_SESSION['OTP_USER_ID'] = $row['id'];
-                    $_SESSION['OTP_USER_EMAIL'] = $email;
-                    $_SESSION['OTP_USER_NAME'] = $row['name'];
-                    header("Location: verify_otp.php");
-                    exit();
+                        // Send OTP via email
+                        $subject = "Your OTP Code for Login";
+                        $html =send_email_using_tamplate($row['name'],$otp);
+                        send_email($email, $html, $subject);
+                        // Store user ID for verification
+                        $_SESSION['OTP_USER_ID'] = $row['id'];
+                        $_SESSION['OTP_USER_EMAIL'] = $email;
+                        $_SESSION['OTP_USER_NAME'] = $row['name'];
+                        header("Location: verify_otp.php");
+                        exit();
+                    } else {
+                        // Regular login (No OTP required)
+                        $_SESSION['USER_LOGIN'] = true;
+                        $_SESSION['USER_ID'] = $row['id'];
+                        $_SESSION['USER_EMAIL'] = $row['email'];
+                        $_SESSION['USER_NAME'] = $row['name'];
+                        header("Location: index.php");
+                        exit();
+                    }
                 } else {
                     $msg = "Incorrect login details.";
 
@@ -76,8 +95,8 @@ if(isset($_POST['submit'])){
             }
         } else {
             $msg = '<div class="alert alert-danger" role="alert">
-					Incorrect login details.
-				</div>';
+                        Incorrect login details.
+                    </div>';
         }
     }
 }

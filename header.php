@@ -118,8 +118,7 @@ require('./inc/function.inc.php');
                       if(mysqli_num_rows($depts_lab_list_res)>0){
                       while($depts_lab_list_row=mysqli_fetch_assoc($depts_lab_list_res)){
                       ?>
-                        <li><a class="dropdown-item" target="_blank" href="dept/<?php echo strtolower($depts_lab_list_row['short_form'])?>">Department of <?php echo $depts_lab_list_row['name']?></a></li>
-                        
+                        <li><a class="dropdown-item" target="_blank" href="<?php echo strtolower($depts_lab_list_row['short_form'])?>">Department of <?php echo $depts_lab_list_row['name']?></a></li>
                       <?php 
                         } } else { ?>
                       <?php } ?>

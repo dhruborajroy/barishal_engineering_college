@@ -1,16 +1,6 @@
 <?php
    define('SECURE_ACCESS', true);
    session_start();
-   if(isset($_GET['dept_id'])) {
-     if (!in_array($_GET['dept_id'], ['ce', 'gsh', 'eee'])) {
-       header("Location: /"); // Change to your desired redirect page
-       exit();
-     }
-     $dept_id=$_SESSION['DEPT_ID'] = $_GET['dept_id'];
-   }else{
-     header("Location: /"); // Redirect if no session and no dept_id in URL
-     exit();
-   }
    include("header.php");
    ?>
    

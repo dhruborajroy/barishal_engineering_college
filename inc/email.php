@@ -1,45 +1,38 @@
-<?php 
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: auto; background: #f4f7ff; padding: 45px 30px 60px; border-radius: 10px; font-family: 'Poppins', sans-serif;">
+  <tr>
+    <td>
+      <table width="100%">
+        <tr>
+          <td align="center">
+            <img src="https://bec.edu.bd/images/logo.png" alt="bec Logo" height="100px">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 
-// if (!defined('SECURE_ACCESS')) {
-//    die("Direct access not allowed!");
-//  }
-?>
-<div style="margin:50px auto;width:70%;padding:20px 0">
-   <span class="im">
-      <div class="adM">
-      </div>
-      <div style="border-bottom:1px solid #eee">
-         <div class="adM">
-         </div>
-         <a style="font-size:1.4em;color:#00466a;text-decoration:none;font-weight:600">Your Brand</a>
-      </div>
-      <p style="font-size:1.1em">Hi {YOUR_NAME},</p>
-      <p>Thank you for choosing Your Brand. Use the following <span class="il">OTP</span> to complete your Sign Up procedures. <span class="il">OTP</span> is valid for 5
-         minutes
+  <tr>
+    <td style="padding: 50px 30px; background: #ffffff; border-radius: 10px; text-align: center;">
+      <h1 style="margin: 0; font-size: 24px; font-weight: 500; color: #1f1f1f;">Your OTP Code</h1>
+      <p style="margin-top: 17px; font-size: 16px; font-weight: 500; color: #555;">Hey {YOUR_NAME},</p>
+      <p style="margin-top: 17px; font-weight: 500; color: #777;">
+        Your OTP for <strong>Barishal Engineering College Students Panel</strong>. Use the following OTP to log into yoyur profile. This OTP is valid for 
+        <span style="font-weight: 600; color: #1f1f1f;">10 minutes</span>. Do not share this code with anyone.
       </p>
-   </span>
-   <h2 style="background:#00466a;margin:0 auto;width:max-content;padding:0 10px;color:#fff;border-radius:4px">
-      {OTP_NUMBER}
-   </h2>
-   <div class="yj6qo ajU">
-      <div id=":1ck" class="ajR" role="button" tabindex="0" data-tooltip="Show trimmed content" aria-label="Show trimmed content" aria-expanded="false"><img class="ajT" src="//ssl.gstatic.com/ui/v1/icons/mail/images/cleardot.gif"></div>
-   </div>
-   <div class="adL">
-      <div class="adm">
-         <div id="q_139" class="ajR h4">
-            <div class="ajT"></div>
-         </div>
-      </div>
-      <div class="h5">
-         <p style="font-size:0.9em">
-            Regards,<br>Your Brand
-         </p>
-         <hr style="border:none;border-top:1px solid #eee">
-         <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-            <p>Your Brand Inc</p>
-            <p>1600 Amphitheatre Parkway</p>
-            <p>California</p>
-         </div>
-      </div>
-   </div>
-</div>
+      <p style="margin-top: 40px; font-size: 40px; font-weight: 600; letter-spacing: 25px; color: #ba3d4f;">
+        {OTP_NUMBER}
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; padding-top: 30px; color: #8c8c8c;">
+      Need help? Contact 
+      <a href="mailto:support@bec.edu.bd" style="color: #499fb6; text-decoration: none;">support@bec.edu.bd</a>
+      or Contact with
+      <a href="#" target="_blank" style="color: #499fb6; text-decoration: none;"> Dhrubo, Email: <a href="mailto:support@bec.edu.bd" style="color: #499fb6; text-decoration: none;">Dhrubo@bec.edu.bd</a></a>.
+    
+      </td>
+  </tr>
+
+</table>

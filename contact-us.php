@@ -28,7 +28,7 @@ include("header.php");
         <div class="row">
           <div class="col-lg-7 mb-4 mb-lg-0">
             <h4 class="mb-4">Need Assistance? Please Complete The Contact Form</h4>
-            <form>
+            <!-- <form>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <input type="text" class="form-control bg-white border" id="Website" placeholder="Website URL">
@@ -49,7 +49,7 @@ include("header.php");
                   <a class="btn btn-primary" href="#">Send Message</a>
                 </div>
               </div>
-            </form>
+            </form> -->
           </div>
           <div class="col-lg-4">
             <div class="row">

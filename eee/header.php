@@ -5,7 +5,7 @@ if (!defined('SECURE_ACCESS')) {
 require('../inc/constant.inc.php');
 require('../inc/connection.inc.php');
 require('../inc/function.inc.php');
-// echo pr($_SESSION['DEPT_ID']);
+$dept_id="eee";
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +82,7 @@ require('../inc/function.inc.php');
                 <!-- Navbar toggler END-->
                 <div class="col-sm-4">
                   <!-- logo -->
-                  <a class="navbar-brand logo text-lg-center" href="<?php echo $dept_id?>">
+                  <a class="navbar-brand logo text-lg-center" href="./">
                     <img src="../images/bec-<?php echo $dept_id?>.png" alt="Logo">
                   </a>
                 </div>
@@ -91,7 +91,7 @@ require('../inc/function.inc.php');
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                          <a class="nav-link" href="dept/<?php echo $dept_id?>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                          <a class="nav-link" href="./" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

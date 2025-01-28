@@ -4,7 +4,7 @@
 define('SECURE_ACCESS', true);
 require('connection.inc.php');
 require('function.inc.php');
-
-echo getDeptStudentCount(1);
-echo getDeptStudentCount(2)
+$name="s";
+$otp=11;
+echo send_email_using_tamplate($name,$otp);
 ?>

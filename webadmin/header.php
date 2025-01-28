@@ -216,8 +216,8 @@ isAdmin();
                   </a>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Menus</span></a>
-                  <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
+                  <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Menus</span></a>
+                  <ul class="nav sub-group-menu ">
                   <li class="nav-item">
                         <a href="menus"
                            class="nav-link "><i
@@ -231,8 +231,8 @@ isAdmin();
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Departments & Labs</span></a>
-                  <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
+                  <a href="#" class="nav-link"><i class="flaticon-open-book"></i><span>Departments & Labs</span></a>
+                  <ul class="nav sub-group-menu ">
                   <li class="nav-item">
                         <a href="departments"
                            class="nav-link "><i

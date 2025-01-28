@@ -786,21 +786,21 @@
   try {
 
     //Team chart
-    var ctx = document.getElementById("team-chart");
+    var ctx = document.getElementById("cgpa-chart");
     if (ctx) {
       ctx.height = 150;
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+          labels: ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"],
           type: 'line',
           defaultFontFamily: 'Poppins',
           datasets: [{
-            data: [0, 7, 3, 5, 2, 10, 7],
+            data: [3.36,3.30,3.36,3.40],
             label: "Expense",
             backgroundColor: 'rgba(0,103,255,.15)',
             borderColor: 'rgba(0,103,255,0.5)',
-            borderWidth: 3.5,
+            borderWidth: 2,
             pointStyle: 'circle',
             pointRadius: 5,
             pointBorderColor: 'transparent',
@@ -862,7 +862,7 @@
             }]
           },
           title: {
-            display: false,
+            display: true,
           }
         }
       });
@@ -1139,55 +1139,6 @@
     console.log(error);
   }
 
-  try {
-
-    // single bar chart
-    var ctx = document.getElementById("singelBarChart");
-    if (ctx) {
-      ctx.height = 150;
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [40, 55, 75, 81, 56, 55, 40],
-              borderColor: "rgba(0, 123, 255, 0.9)",
-              borderWidth: "0",
-              backgroundColor: "rgba(0, 123, 255, 0.5)"
-            }
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                fontFamily: "Poppins"
-
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontFamily: "Poppins"
-              }
-            }]
-          }
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
 
 })(jQuery);
 
