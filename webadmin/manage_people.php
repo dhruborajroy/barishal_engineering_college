@@ -78,6 +78,7 @@ define('SECURE_ACCESS', true);
        $teaching_supervision = get_safe_value($_POST['teaching_supervision']);
        $joined_at = get_safe_value($_POST['joined_at']);
        $visibility = get_safe_value($_POST['visibility']);
+       $type = get_safe_value($_POST['type']);
        $dept_head = isset($_POST['dept_head']) ? 1 : 0; 
        $_SESSION['ADMIN_ID'];
        $added_on=time();
@@ -96,15 +97,15 @@ define('SECURE_ACCESS', true);
                    $image=time().'.jpg';
                    move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                            
-                   $sql = "INSERT INTO people (id, name,image, designation, phone, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility, dept_head, status) 
-                   VALUES ('$id','$name','$image', '$designation', '$phone', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', $dept_head, '1')";
+                   $sql = "INSERT INTO people (id, name,image, designation, phone, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility, dept_head,type, status) 
+                   VALUES ('$id','$name','$image', '$designation', '$phone', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', $dept_head, '$type',  '1')";
                    if(mysqli_query($con,$sql)){
                        $_SESSION['TOASTR_MSG']=array(
                            'type'=>'success',
                            'body'=>'Data Inserted',
                            'title'=>'Success',
                        );
-                       redirect('people');
+                     //   redirect('people');
                    }else{
                        echo $sql;
                    }
@@ -127,21 +128,21 @@ define('SECURE_ACCESS', true);
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                 $updated_on=time();
-                $sql = "UPDATE people SET name='$name',image='$image', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head WHERE id='$id'";
+                $sql = "UPDATE people SET name='$name',image='$image', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head, type='$type' WHERE id='$id'";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
                         'type'=>'success',
                         'body'=>'Data updated',
                         'title'=>'Success',
                     );
-                    redirect('./people');
+                  //   redirect('./people');
                 }else{
                     echo $sql;
                 }
             }
         }else{
             $updated_on=time();
-            $sql = "UPDATE people SET name='$name', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head WHERE id='$id'";
+            $sql = "UPDATE people SET name='$name', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head, type='$type' WHERE id='$id'";
             if(mysqli_query($con,$sql)){
                 $_SESSION['TOASTR_MSG']=array(
                     'type'=>'success',
@@ -154,6 +155,7 @@ define('SECURE_ACCESS', true);
             }
         }
     }
+    echo $sql;
 }
 ?>
 <div class="dashboard-content-one">
@@ -276,7 +278,7 @@ define('SECURE_ACCESS', true);
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="joined_at">Joined At</label>
-               <input type="date" name="joined_at" id="joined_at" value="<?php echo htmlspecialchars($joined_at); ?>" class="form-control">
+               <input type="date" name="joined_at" id="joined_at" value="<?php echo htmlspecialchars($joined_at); ?>" class="form-control" required>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="visibility">Visibility</label>

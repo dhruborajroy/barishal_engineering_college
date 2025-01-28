@@ -6,7 +6,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
 		mysqli_query($con,"delete from services_request where id='$id'");
-		redirect('services_requests');
+		redirect('service_requests');
 	}
 	if($type=='active' || $type=='deactive'){
 		$status=1;
@@ -14,7 +14,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 			$status=0;
 		}
 		mysqli_query($con,"update services_request set status='$status' where id='$id'");
-        redirect('./services_requests');
+        redirect('./service_requests');
 	}
 
 }
@@ -37,7 +37,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
         <div class="card-body">
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>All people' Data</h3>
+                    <h3>Service Requests</h3>
                 </div>
             </div>
             <div class="table-responsive">

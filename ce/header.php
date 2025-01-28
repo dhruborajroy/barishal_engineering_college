@@ -49,6 +49,9 @@ $dept_id="ce";
             <div class="social-icon">
               <ul class="social-icon">
                     <li>
+                      <a href="http://bec.edu.bd" target="_blank" rel="noopener noreferrer">Main Website</a>
+                    </li>
+                    <li>
                       <a href="http://bec.ac.bd" target="_blank" rel="noopener noreferrer">Old Website</a>
                     </li>
                     <li>
@@ -91,7 +94,7 @@ $dept_id="ce";
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                          <a class="nav-link" href="./" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                          <a class="nav-link" href="./" role="button">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,7 +105,7 @@ $dept_id="ce";
                             <li><a class="dropdown-item" href="about-us">About Us</a></li>
                             <li><a class="dropdown-item" href="vision-mission">Vision & Mission</a></li>
                             <li><a class="dropdown-item" href="head-message">Message of the Head</a></li>
-                            <li><a class="dropdown-item" href="booklet">Information Booklet</a></li>
+                            <!-- <li><a class="dropdown-item" href="booklet">Information Booklet</a></li> -->
                           </ul>
                         </li>
                         <li class="nav-item dropdown">

@@ -215,7 +215,7 @@ isAdmin();
                      <span>About Us</span>
                   </a>
                </li>
-               <li class="nav-item sidebar-nav-item">
+               <!-- <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Menus</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">
@@ -229,7 +229,7 @@ isAdmin();
                            class="fas fa-angle-right"></i>Add New Menu</a>
                      </li>
                   </ul>
-               </li>
+               </li> -->
                <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-open-book"></i><span>Departments & Labs</span></a>
                   <ul class="nav sub-group-menu ">

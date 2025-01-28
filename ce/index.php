@@ -92,7 +92,7 @@
             <div class="row mb-4 mb-md-0">
                <div class="col-md-8">
                   <div class="section-title">
-                     <h2>Latest Events</h2>
+                     <h2>Latest News</h2>
                   </div>
                </div>
                <div class="col-md-4 text-md-right">
@@ -110,7 +110,7 @@
                      <div class="row">
                         <div class="col-lg-3">
                            <div class="events-img mb-4 mb-lg-0">
-                              <img class="img-fluid border-0" src="../images/events/<?php echo $news_res_row['image']?>" alt="">
+                              <img class="img-fluid border-0" src="../images/news/<?php echo $news_res_row['image']?>" alt="">
                            </div>
                         </div>
                         <div class="col-lg-6 align-self-center">

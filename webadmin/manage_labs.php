@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            // redirect('./labs');
+            redirect('./labs');
         }else{
             echo $sql;
         }

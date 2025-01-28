@@ -58,23 +58,7 @@ include("header.php");
                 $i++;
                 } } else { ?>
                 <div class="col-xl-3 col-lg-6 col-sm-6 mb-4">
-                  <!-- team-01 START -->
-                  <div class="team">
-                    <div class="team-img">
-                      <img class="img-fluid" src="images/teachers/rabbani.jpg" alt="">
-                    </div>
-                    <div class="team-info">
-                      <a href="faculty-details" class="team-name">Md. Liton Rabbani</a>
-                      <p class="team-leader">Principal(In-charge)</p>
-                      <ul class="list-unstyled">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- team-01 END -->
+                  No Faculty Found
                 </div>
             <?php } ?>
             
