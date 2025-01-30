@@ -89,8 +89,8 @@ $user_id=$_SESSION[ 'USER_ID'];
                                 <i class="fas  fa-certificate"></i>Hall Clearance</a>
                         </li>
                         <li>
-                            <a href="attandance">
-                                <i class="fas  fa-certificate"></i>Attandance</a>
+                            <a href="attendance">
+                                <i class="fas  fa-certificate"></i>Attendance</a>
                         </li>
                         <li>
                             <a href="request_services">
@@ -131,8 +131,8 @@ $user_id=$_SESSION[ 'USER_ID'];
                                 <i class="fas  fa-certificate"></i>CGPA Calculator</a>
                         </li> -->
                         <li>
-                            <a href="attandance">
-                                <i class="fas  fa-certificate"></i>Attandance</a>
+                            <a href="attendance">
+                                <i class="fas  fa-certificate"></i>Attendance</a>
                         </li>
                         <li>
                             <a href="hall_clearance">

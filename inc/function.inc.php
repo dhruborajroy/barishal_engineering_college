@@ -124,8 +124,19 @@ window.location.href = './login.php';
 <?php
 	}
 }
+
 function isUSER(){
 	if(!isset($_SESSION['USER_LOGIN'])){
+	?>
+<script>
+window.location.href = './login.php';
+</script>
+<?php
+	}
+}
+
+function isFaculty(){
+	if(!isset($_SESSION['FACULTY_LOGIN'])){
 	?>
 <script>
 window.location.href = './login.php';
