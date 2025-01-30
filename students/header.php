@@ -41,6 +41,8 @@ $user_id=$_SESSION[ 'USER_ID'];
     <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
@@ -54,7 +56,7 @@ $user_id=$_SESSION[ 'USER_ID'];
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index">
+                        <a class="logo" href="./">
                             <img src="../images/logo.png" alt="logo" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -83,6 +85,14 @@ $user_id=$_SESSION[ 'USER_ID'];
                                 <i class="fas  fa-certificate"></i>CGPA Calculator</a>
                         </li> -->
                         <li>
+                            <a href="hall_clearance">
+                                <i class="fas  fa-certificate"></i>Hall Clearance</a>
+                        </li>
+                        <li>
+                            <a href="attandance">
+                                <i class="fas  fa-certificate"></i>Attandance</a>
+                        </li>
+                        <li>
                             <a href="request_services">
                                 <i class="fas  fa-certificate"></i>Request Services</a>
                         </li>
@@ -99,7 +109,7 @@ $user_id=$_SESSION[ 'USER_ID'];
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="./">
                     <img src="../images/logo.png" alt="BEC Logo" />
                 </a>
             </div>
@@ -120,6 +130,14 @@ $user_id=$_SESSION[ 'USER_ID'];
                             <a href="cgpa_calculator">
                                 <i class="fas  fa-certificate"></i>CGPA Calculator</a>
                         </li> -->
+                        <li>
+                            <a href="attandance">
+                                <i class="fas  fa-certificate"></i>Attandance</a>
+                        </li>
+                        <li>
+                            <a href="hall_clearance">
+                                <i class="fas  fa-certificate"></i>Hall Clearance</a>
+                        </li>
                         <li>
                             <a href="request_services">
                                 <i class="fas  fa-certificate"></i>Request Services</a>

@@ -176,11 +176,96 @@ function getTotalNotice(){
 }
 
 
+function getGpaCount($student_id) {
+    global $con;
+
+    // SQL Query to fetch CGPA values only
+    $sql = "SELECT CONCAT(
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '1st' THEN sc.gpa END), 0.00), 2), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '2nd' THEN sc.gpa END), 0.00), 2), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '3rd' THEN sc.gpa END), 0.00), 4, ' '), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '4th' THEN sc.gpa END), 0.00), 2), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '5th' THEN sc.gpa END), 0.00), 2), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '6th' THEN sc.gpa END), 0.00), 2), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '7th' THEN sc.gpa END), 0.00), 2), 4, ' '), ', ',
+                LPAD(FORMAT(COALESCE(MAX(CASE WHEN sc.semester = '8th' THEN sc.gpa END), 0.00), 2), 4, ' ')
+            ) AS cgpa_list
+            FROM students s
+            LEFT JOIN students_cgpa sc ON s.id = sc.student_id
+            WHERE s.id = '$student_id'
+            GROUP BY s.id";
+
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    return $row ? $row['cgpa_list'] : '0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00';
+}
+
+
+// function calculateSemesterWiseCGPA($student_id) {
+//     $gpaList = getGpaCount($student_id);
+//     $gpaArray = explode(", ", $gpaList);
+
+//     $sum = 0;
+//     $cgpaArray = [];
+
+//     for ($i = 0; $i < count($gpaArray); $i++) {
+//         $sum += floatval($gpaArray[$i]); 
+//         $cgpa = round($sum / ($i + 1), 2); 
+//         $cgpaArray[] = $cgpa;
+//     }
+
+//     return implode(", ", $cgpaArray);
+// }
+
+function calculateSemesterWiseCGPA($student_id) {
+    // Get GPA List
+    $gpaList = getGpaCount($student_id);
+
+    // Convert comma-separated values into an array
+    $gpaArray = explode(", ", $gpaList);
+
+    $sum = 0;
+    $cgpaArray = [];
+
+    // Loop through each semester and calculate CGPA
+    for ($i = 0; $i < count($gpaArray); $i++) {
+        $gpa = floatval($gpaArray[$i]);
+
+        // Stop counting if the GPA is 0
+        if ($gpa == 0.00) {
+            break;
+        }
+
+        $sum += $gpa; // Add GPA to the sum
+        $cgpa = round($sum / ($i + 1), 2); // Compute cumulative average
+        $cgpaArray[] = $cgpa;
+    }
+
+    // If CGPA array is empty, return 0.00
+    return !empty($cgpaArray) ? implode(", ", $cgpaArray) : '0.00';
+}
+
+
+function calculateCGPA($student_id) {
+    $gpaList = getGpaCount($student_id);
+    $gpaArray = explode(", ", $gpaList);
+    $sum = 0;
+    $count = 0;
+    foreach ($gpaArray as $gpa) {
+        $gpa = floatval($gpa); 
+        if ($gpa > 0) {
+            $sum += $gpa;
+            $count++;
+        }
+    }
+    $cgpa = ($count > 0) ? round($sum / $count, 2) : 0.00;
+    return number_format($cgpa, 2); 
+}
 
 
 function getDeptStudentCount($dept_id){
 	global $con;
-	// SQL Query
 	$sql = "SELECT 
 	b.id AS batch_id, 
 	b.name AS batch_name, 
@@ -190,38 +275,28 @@ function getDeptStudentCount($dept_id){
 	WHERE 1
 	GROUP BY b.id, b.name
 	ORDER BY b.id ASC";
-
 	$result = mysqli_query($con, $sql);
-
-	$batches = []; // Initialize array
-
-	// Fetch data
+	$batches = []; 
 	if ($result) {
 	while ($row = mysqli_fetch_assoc($result)) {
 	$batches[] = $row;
 	}
 	mysqli_free_result($result);
 	} else {
-	echo "Error: " . mysqli_error($con);
+	    echo "Error: " . mysqli_error($con);
 	}
-
-
-	// Display results
 	$batchNames = [];
 	$studentCounts = [];
-
 	foreach ($batches as $batch) {
 	$batchNames[] = '"Batch ' . str_pad($batch['batch_name'], 2, "0", STR_PAD_LEFT) . '"';
 	$studentCounts[] = $batch['student_count'];
 	}
-
 	implode(", ", $batchNames) . "<br>";
 	return  implode(", ", $studentCounts);
 }
 
 function getDeptBatchList($dept_id){
 	global $con;
-	// SQL Query
 	$sql = "SELECT 
 	b.id AS batch_id, 
 	b.name AS batch_name, 
@@ -234,9 +309,7 @@ function getDeptBatchList($dept_id){
 
 	$result = mysqli_query($con, $sql);
 
-	$batches = []; // Initialize array
-
-	// Fetch data
+	$batches = []; 
 	if ($result) {
 	while ($row = mysqli_fetch_assoc($result)) {
 	$batches[] = $row;

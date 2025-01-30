@@ -82,7 +82,7 @@ if(mysqli_num_rows($result)>=1){
         $html .= '<tr>
                 <td colspan="7" style="text-align: justify; padding-top: 10px; font-size: 20px; line-height: 1.8;">
                     <p style="margin-bottom: 15px;">
-                        This is to certify that <strong>' . $student['name'] . '</strong>, bearing Reg No. <strong>' . $student['reg_no'] . '</strong>, 
+                    This is to certify that <strong>' . $student['name'] . '</strong>, bearing Reg No. <strong>' . $student['reg_no'] . '</strong>, 
                         Session <strong>' . $student['session'] . '</strong>, was a student of Barishal Engineering College, Barishal, 
                         at the Department of Civil Engineering affiliated with the University of Dhaka from 
                         <strong>' . $student['study_period'] . '</strong>.

@@ -28,25 +28,7 @@ $result = mysqli_query($con, $query);
 $all_testimonials_html = ''; 
 if(mysqli_num_rows($result)>=1){
     while ($student = mysqli_fetch_assoc($result)) {
-        if (!$first_page) {
-            $all_testimonials_html .= "<pagebreak />";
-        }
-        $first_page = false; 
-    
-        $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => __DIR__ . '/custom',
-            'default_font_size' => 12,
-            'default_font' => 'FreeSerif',
-            'margin_left' => 20,
-            'margin_right' => 20,
-            'margin_top' => 10,
-            'margin_bottom' => 10,
-        ]);
-    
-        $mpdf->SetTitle('TESTIMONIAL - ' . $student['name']);
-        $mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
-    
-        
+
         $html = '<table class="table" width="100%" border="0" cellspacing="0" cellpadding="5" style="border-collapse: collapse; page-break-inside: avoid;">';
         $html .= '
             <tr>
@@ -78,12 +60,12 @@ if(mysqli_num_rows($result)>=1){
             <tr style="border: 0px solid black;">
                 <td align="left" colspan="6" style="padding-top:20px;text-align: justify;font-size:20px; border: 0px solid black;">
                     অত্র কলেজের <strong>' . $student['name_bn'] . '</strong> বিভাগের শিক্ষার্থী <strong>' . $student['name'] . '</strong>, ঢাবি রেজিঃ <strong>' . $student['reg_no'] . '</strong>, শিক্ষাবর্ষ: <strong>' . $student['session'] . '</strong>,  
-                    এর সকল একাডেমিক কার্যক্রম শেষ হওয়ায় অত্র প্রতিষ্ঠান থেকে তার কোর্স সমাপনী সনদ ও প্রশংসা পত্র প্রদানের ব্যবস্থা গ্রহণ করা হচ্ছে। তাঁর দেনা-পাওনা সম্পর্কে 
-                    বিস্তারিত তথ্যের জন্য সংশ্লিষ্ট সকলকে নিম্নবর্ণিত ছক অনুযায়ী ব্যবস্থা গ্রহণ করতে নির্দেশ প্রদান করা হলো।
+                    এর আগামীতে অনুষ্ঠিত সেমিস্টার/রিটেক/ইম্পপ্রুভমেন্ট পরিক্ষায় অংশগ্রহনের জন্য ব্যবস্থা গ্রহণ করা হচ্ছে। তাঁর দেনা-পাওনা সম্পর্কে 
+                    বিস্তারিত তথ্যের জন্য সংশ্লিষ্ট হলসুপার কে  নিম্নবর্ণিত ছক অনুযায়ী তথ্য প্রদান ও ব্যবস্থা গ্রহণ করতে নির্দেশ প্রদান করা হলো।
                     </td>
             </tr>';  
         
-        $sql = "SELECT * FROM depts_lab_list where depts_lab_list.id='$dept_id' or depts_lab_list.print='1'";
+        $sql = "SELECT * FROM depts_lab_list where depts_lab_list.id='5' ";
         $res = mysqli_query($con, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
@@ -100,9 +82,9 @@ if(mysqli_num_rows($result)>=1){
                     <td align="center" width="10%" style="border: 1px solid black;">ক্রমিক</td>
                     <td align="left" width="30%" style="border: 1px solid black;">বিভাগ/সপ</td>
                     <td align="left" width="15%" style="border: 1px solid black;">দেনা-পাওনা তথ্য</td>
-                    <td align="left" width="15%" style="border: 1px solid black;">ভারপ্রাপ্ত কর্মকর্তার স্বাক্ষর</td>
-                    <td align="left" width="15%" style="border: 1px solid black;">ওয়ার্কশপ সুপার/সপ ইনচার্জের স্বাক্ষর</td>
-                    <td align="left" width="15%" style="border: 1px solid black;">বিভাগীয় প্রধানের স্বাক্ষর</td>
+                    <td align="left" width="15%" style="border: 1px solid black;">কোষাধ্যক্ষের স্বাক্ষর</td>
+                    <td align="left" width="15%" style="border: 1px solid black;">হিসাবরক্ষকে স্বাক্ষর</td>
+                    <td align="left" width="15%" style="border: 1px solid black;">হল প্রভোস্টের স্বাক্ষর</td>
                 </tr>';
         
                 $lab_sql = "SELECT * FROM lab_list WHERE dept_id='".$row['id']."'";
@@ -153,7 +135,7 @@ if(mysqli_num_rows($result)>=1){
         $html .= '
         <tr style="border: 0px solid black;">
             <td align="left" colspan="6" style="font-size:20px;padding-top:20px"> 
-            উপরোক্ত তথ্যের প্রেক্ষিতে তাকে ছাড়পত্র প্রদানের নির্দেশ প্রদান করা হলো।
+            উপরোক্ত তথ্যের প্রেক্ষিতে তাকে আগামী পরিক্ষায় অংশগ্রহনের নির্দেশ প্রদান করা হলো।
             </td>
 
         </tr>';
@@ -175,9 +157,7 @@ if(mysqli_num_rows($result)>=1){
         $html .= '</table>';
 
 
-        $mpdf->WriteHTML($html);
-        $file = $student['session']."_".$student['reg_no']."_". '_TESTIMONIAL.pdf';
-        $mpdf->Output("../testimonials/" . $file, 'F'); 
+        // $mpdf->WriteHTML($html); 
         $all_testimonials_html .= $html;
     }
 }else{
@@ -193,7 +173,7 @@ $all_mpdf = new \Mpdf\Mpdf([
     'margin_bottom' => 5,
 ]);
 $all_mpdf->SetTitle('All Testimonials - Barishal Engineering College');
-// $all_mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
+$all_mpdf->SetFooter('<div style="text-align:center;">Developed By Dhrubo - Civil 04</div>');
 $all_mpdf->WriteHTML($all_testimonials_html);
 $all_mpdf->Output("../testimonials/ALL_TESTIMONIALS.pdf", 'I'); // Save the file
 mysqli_close($con);

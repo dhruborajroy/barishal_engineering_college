@@ -36,6 +36,34 @@
 <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
 <script src="vendor/chartjs/Chart.bundle.min.js"></script>
 <script src="vendor/select2/select2.min.js">
+<script src="js/toastr.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+</script>
+<script>
+   toastr.options = {
+       "closeButton": true,
+       "debug": false,
+       "newestOnTop": true,
+       "progressBar": true,
+       "positionClass": "toast-top-right",
+       "preventDuplicates": true,
+       "showDuration": "300",
+       "hideDuration": "1000",
+       "timeOut": "000", // 5 seconds
+       "extendedTimeOut": "1000",
+       "showEasing": "swing",
+       "hideEasing": "linear",
+       "showMethod": "fadeIn",
+       "hideMethod": "fadeOut",
+        "preventDuplicates": true, // Prevent duplicates
+        "positionClass": "toast-top-right", // Position of the toastr
+        "closeButton": true, // Show close button
+        "timeOut": 1000, // Duration for which the toastr is displayed
+        "extendedTimeOut": 1000 // Duration for which the toastr is displayed when hovering over it
+   }
 </script>
 
 <!-- Main JS-->

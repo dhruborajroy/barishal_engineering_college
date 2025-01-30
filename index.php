@@ -202,7 +202,7 @@
 </section>
 <!--=================================Course item -->
 <!--=================================Why choose us -->
-<section class="bg-dark">
+<!-- <section class="bg-dark">
    <div class="container-fluid">
       <div class="row no-guuters">
          <div class="col-lg-6 bg-holder d-none d-lg-block" style="background-image: url(images/bg/01.jpg);">
@@ -226,7 +226,7 @@
          </div>
       </div>
    </div>
-</section>
+</section> -->
 <!--=================================Why choose us -->
 <!--=================================Event -->
 <section class="space-ptb">

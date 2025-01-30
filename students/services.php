@@ -49,6 +49,39 @@ include("header.php");
                                     </table>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <h2 class="title-1 m-b-25">Semester Clearance</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>date</th>
+                                                <th>Service ID</th>
+                                                <th>Service Type</th>
+                                                <th class="text-right">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="tr-shadow">
+                                            <td>
+                                                <label class="au-checkbox">
+                                                    <input type="checkbox">
+                                                    <span class="au-checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>Lori Lynch</td>
+                                            <td>
+                                                <span class="block-email">lori@example.com</span>
+                                            </td>
+                                            <td>
+                                                <span class="block-email">lori@example.com</span>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 <?php 
 include("footer.php");
