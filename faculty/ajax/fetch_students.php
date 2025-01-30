@@ -29,19 +29,29 @@ if (isset($_POST['semester'])) {
             $checked = ($row['attendance_status'] == 1) ? 'checked' : '';
             echo '
             <div class="d-flex align-items-center justify-content-between flex-wrap p-2 border-bottom">
-                <div class="flex-grow-1 text-start">
-                    <span>'.htmlspecialchars($row['name']).'</span>
+                
+                <div class="col-sm-12 col-lg-12 row">
+                    <div class="col-sm-4 col-lg-4">
+                        <div class="flex-grow-1 text-start">
+                            <span>'.htmlspecialchars($row['name']).'</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4">
+                        <div class="flex-grow-1 text-center">
+                            <span id="reg_no" value="'.htmlspecialchars($row['reg_no']).'">'.htmlspecialchars($row['reg_no']).'</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4">
+                        <div class="flex-grow-1 text-end">
+                            <label class="switch switch-3d switch-success">
+                                <input type="checkbox" class="switch-input attendance-toggle" data-id="'.$student_id.'" '.$checked.'>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-grow-1 text-center">
-                    <span>'.htmlspecialchars($row['reg_no']).'</span>
-                </div>
-                <div class="flex-grow-1 text-end">
-                    <label class="switch switch-3d switch-success">
-                        <input type="checkbox" class="switch-input attendance-toggle" data-id="'.$student_id.'" '.$checked.'>
-                        <span class="switch-label"></span>
-                        <span class="switch-handle"></span>
-                    </label>
-                </div>
+
             </div>';
         }
     } else {

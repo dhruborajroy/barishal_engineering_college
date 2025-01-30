@@ -22,30 +22,30 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
     <meta name="keywords" content="Barishal Engineering College Student's Portal">
 
     <!-- Title Page-->
-    <title>BEC Student's Portal</title>
+    <title>BEC Teacher's Portal</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../students/css/font-face.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../students/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="../students/css/theme.css" rel="stylesheet" media="all">
 
 </head>
 <!-- animsition -->
@@ -77,24 +77,12 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
                                 <i class="fas fa-chart-bar"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="services">
-                                <i class="fas  fa-certificate"></i>Services</a>
-                        </li>
-                        <!-- <li>
-                            <a href="cgpa_calculator">
-                                <i class="fas  fa-certificate"></i>CGPA Calculator</a>
-                        </li> -->
-                        <li>
-                            <a href="hall_clearance">
-                                <i class="fas  fa-certificate"></i>Hall Clearance</a>
+                            <a href="attendance_data">
+                                <i class="fas  fa-certificate"></i>Attendance Data</a>
                         </li>
                         <li>
                             <a href="attendance">
                                 <i class="fas  fa-certificate"></i>Attendance</a>
-                        </li>
-                        <li>
-                            <a href="request_services">
-                                <i class="fas  fa-certificate"></i>Request Services</a>
                         </li>
                         <li>
                             <a href="profile">
@@ -123,28 +111,12 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
                                 <i class="fas fa-chart-bar"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="services">
-                                <i class="fas  fa-certificate"></i>Services</a>
-                        </li>
-                        <!-- <li>
-                            <a href="cgpa_calculator">
-                                <i class="fas  fa-certificate"></i>CGPA Calculator</a>
-                        </li> -->
-                        <li>
                             <a href="attendance">
                                 <i class="fas  fa-certificate"></i>Attendance</a>
                         </li>
                         <li>
                             <a href="attendance_data">
                                 <i class="fas  fa-certificate"></i>Attendance Data</a>
-                        </li>
-                        <li>
-                            <a href="hall_clearance">
-                                <i class="fas  fa-certificate"></i>Hall Clearance</a>
-                        </li>
-                        <li>
-                            <a href="request_services">
-                                <i class="fas  fa-certificate"></i>Request Services</a>
                         </li>
                         <li>
                             <a href="profile">
