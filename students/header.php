@@ -131,7 +131,7 @@ $user_id=$_SESSION[ 'USER_ID'];
                                 <i class="fas  fa-certificate"></i>CGPA Calculator</a>
                         </li> -->
                         <li>
-                            <a href="attendance">
+                            <a href="attendance_data">
                                 <i class="fas  fa-certificate"></i>Attendance</a>
                         </li>
                         <li>

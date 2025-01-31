@@ -30,7 +30,7 @@ while($row=mysqli_fetch_assoc($res)){
          </div>
          <div class="dropdown">
                <a href="manage_general_info"> <button type="submit"
-                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Slider</button>
+                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Edit</button>
                </a>
          </div>
       </div>

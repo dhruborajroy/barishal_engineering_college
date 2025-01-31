@@ -77,3 +77,26 @@
 </body>
 
 </html>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<?php
+if (isset($_SESSION['TOASTR_MSG'])) {
+    $type = $_SESSION['TOASTR_MSG']['type']; // success, error, info, warning
+    $body = $_SESSION['TOASTR_MSG']['body'];
+    $title = $_SESSION['TOASTR_MSG']['title'];
+
+    echo "<script>
+        $(document).ready(function() {
+            toastr.$type('$body', '$title');
+        });
+    </script>";
+
+    // Clear Toastr message after displaying
+    unset($_SESSION['TOASTR_MSG']);
+}
+?>

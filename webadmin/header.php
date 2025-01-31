@@ -215,6 +215,12 @@ isAdmin();
                      <span>About Us</span>
                   </a>
                </li>
+               <li class="nav-item">
+                  <a href="course_teachers" class="nav-link <?php // echo  $index_active?>">
+                     <i class="flaticon-dashboard"></i>
+                     <span>Course Teachers</span>
+                  </a>
+               </li>
                <!-- <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Menus</span></a>
                   <ul class="nav sub-group-menu ">
@@ -328,7 +334,7 @@ isAdmin();
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Faculty & Staffs</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">
-                        <a href="faculty"
+                        <a href="people"
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>All
                            People</a>

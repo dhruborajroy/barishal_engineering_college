@@ -31,7 +31,7 @@ if(isset($_GET['id']) && $_GET['id']!==""){
            'body'=>'You don\'t have the permission to access the location!',    
            'title'=>'Error',
         );
-        // redirect("index.php");
+        redirect("index.php");
     }
 }
 if(isset($_POST['submit'])){
@@ -63,7 +63,7 @@ if(isset($_POST['submit'])){
                         'body'=>'Data Inserted',
                         'title'=>'Success',
                     );
-                // redirect('./sliders');
+                redirect('./sliders');
                 }
             }else{
                 $msg= "Only select jpg or png image";
@@ -91,7 +91,7 @@ if(isset($_POST['submit'])){
                         'body'=>'Data Updated',
                         'title'=>'Success',
                     );
-                    // redirect('./sliders');
+                    redirect('./sliders');
                     
                 }else{
                     $msg= "Only select jpg or png image";
@@ -105,6 +105,7 @@ if(isset($_POST['submit'])){
                     'body'=>'Data Updated',
                     'title'=>'Success',
                 );
+                redirect('./sliders');
             }
         }
     }

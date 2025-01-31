@@ -1,124 +1,178 @@
 <?php 
-define('SECURE_ACCESS', true);
-include("header.php");
-?>
+   define('SECURE_ACCESS', true);
+   include("header.php");
+   ?>
 <!-- MAIN CONTENT-->
 <div class="main-content">
-            <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="heading-layout1">
-                                    <div class="item-title">
-                                        <h3>Attendence Sheet Of Class One: Section A, April 2019</h3>
-                                    </div>
-                                </div>
-                                <div class="table-responsive"><?php
-// Assuming the database connection is established as $con
-
-// Get the course_id and student_id (you can pass these via GET or POST as needed)
-$course_id = '3';  // Example course_id, replace it dynamically
-$student_id = $user_id;           // The specific student ID
-
-// Query to fetch attendance data for the specific course and student
-$query = "
-    SELECT * 
-    FROM attendance 
-    WHERE course_id = '$course_id' 
-    AND student_id = '$student_id'
-    ORDER BY date ASC";  // Sorting by date ascending (can be DESC if you prefer)
-$result = mysqli_query($con, $query);
-
-// Check if attendance data is found
-if (mysqli_num_rows($result) > 0) {
-    // Initialize an array to hold the dates
-    $dates = [];
-    $attendance_data = [];
-
-    // Loop through the records to fetch all unique dates and attendance values
-    while ($row = mysqli_fetch_assoc($result)) {
-        $attendance_data[$row['date']] = $row['value'];  // Store attendance values by date
-        $dates[] = $row['date'];  // Collect all unique dates
-    }
-
-    // Create the attendance table
-    echo '<table class="table table-striped table-bordered text-nowrap">';
-    echo '<thead>';
-    echo '<tr><th class="text-left">Student</th>';  // First column for student name
-    foreach (array_unique($dates) as $date) {
-        echo '<th>' . $date . '</th>';  // Create a column for each date
-    }
-    echo '<th>Attendance Percentage</th>';  // Add an extra column for percentage
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
-
-    // Fetch student name for the specific student_id
-    $student_name = "Unknown Student"; // Default value in case of missing data
-    $student_query = "SELECT name FROM students WHERE id = '$student_id'"; // Replace with your student table and field
-    $student_result = mysqli_query($con, $student_query);
-    if ($student_row = mysqli_fetch_assoc($student_result)) {
-        $student_name = $student_row['name'];
-    }
-
-    // Output the row for this student
-    echo '<tr>';
-    echo '<td class="text-left">' . $student_name . '</td>';  // Display student name
-    $present_days = 0; // Initialize present days count
-    foreach (array_unique($dates) as $date) {
-        // Check if the student has an attendance value for this date
-        $attendance_status = isset($attendance_data[$date]) && $attendance_data[$date] == 1
-            ? '<i class="fas fa-check text-success"></i>' 
-            : (isset($attendance_data[$date]) && $attendance_data[$date] == 0
-                ? '<i class="fas fa-times text-danger"></i>' 
-                : '');
-        echo '<td class="status-column">' . $attendance_status . '</td>';  // Display attendance status
-        
-        // Increment the present days count if the student is marked as present (value = 1)
-        if (isset($attendance_data[$date]) && $attendance_data[$date] == 1) {
-            $present_days++;
-        }
-    }
+<div class="col-12">
     
-    // Calculate the attendance percentage
-    $total_days = count(array_unique($dates));  // Total number of dates (columns)
-    $attendance_percentage = ($total_days > 0) ? ($present_days / $total_days) * 100 : 0;
-
-    // Display the attendance percentage in the last column
-    echo '<td class="text-center">' . number_format($attendance_percentage, 2) . '%</td>';
-    echo '</tr>';
-
-    echo '</tbody>';
-    echo '</table>';
-} else {
-    echo "No attendance records found for this student and course.";
-}
-?>
-
-<style>
-    .status-column {
-        text-align: center; /* Center align the content */
-        vertical-align: middle; /* Vertically align the icons */
-        padding: 15px; /* Optional: to adjust spacing */
-    }
-
-    .table td, .table th {
-        vertical-align: middle; /* Ensure all table cells are vertically aligned */
-    }
-
-    .table th {
-        text-align: center;
-    }
-
-    .table td {
-        text-align: center;
-    }
-</style>
-
-                                </div>
+<div class="card">
+            <div class="card-header">
+               <strong>Students Attandance</strong>
+            </div>
+            <div class="card-body card-block">
+               <form  method="get" enctype="multipart/form-data" class="form-horizontal">
+                  <div class="row form-group col-md-12">
+                     <div class="col-sm-12 col-md-6 mt-2">
+                        <select  id="semester" class="form-control-lg form-control">
+                           <option value='0'>Select Semester</option>
+                           <?php 
+                              $semesters = [
+                                  '1' => '1st',
+                                  '2' => '2nd',
+                                  '3' => '3rd',
+                                  '4' => '4th',
+                                  '5' => '5th',
+                                  '6' => '6th',
+                                  '7' => '7th',
+                                  '8' => '8th',
+                              ];
+                              foreach ($semesters as $key=>$sem) {
+                                  echo "<option value='$key'>$sem</option>";
+                              }
+                              ?>
+                        </select>
+                     </div>
+                     <div class="col-sm-12 col-md-6 mt-2">
+                        <select name="course_id" id="course" class="form-control-lg form-control">
+                           <option value="">Select Course</option>
+                        </select>
+                     </div>
+                  </div>
+            </div>
+            <div class="card-footer">
+               <input type="submit" value="Get Attendance" disabled id="get_attendance"  class="btn btn-primary btn-sm">
+               <a href="attendance"> 
+                    <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+               </button>
+               </a>
+            </div>
+            
+            </form>
+         </div>
+        <?php if(isset($_GET['course_id'])){?>
+            <div class="card">
+                <div class="card-body">
+                    
+                    <div class="col-12 row">
+                        <div class="col-8">
+                        <div class="heading-layout1">
+                            <div class="item-title">
+                                <h3>Attendance</h3>
                             </div>
+                        </div>
+                        </div>
+                        <div class="col-4">
+                        <div class="heading-layout1">
+                            <div class="item-title">
+                                <!-- <a href="print_attendance_data?course_id=<?php echo $_GET['course_id']?>">
+                                    <h3>
+                                    print<i class="fas fa-print"></i>
+                                    </h3>
+                                </a> -->
+                            </div>
+                        </div>
+                        </div>
+                        <div class="table-responsive col-12">
+                        <table class="table bs-table table-striped table-bordered">
+                            <?php 
+                                // Fetch all distinct dates
+                                $course_id=get_safe_value($_GET['course_id']);
+                                $date_query = "SELECT DISTINCT date FROM attendance  where student_id='$user_id' and course_id='$course_id' ORDER BY date ASC";
+                                $date_result = mysqli_query($con, $date_query);
+                                $dates = [];
+                                while ($row = mysqli_fetch_assoc($date_result)) {
+                                    $dates[] = $row['date'];
+                                }
+                                
+                                // Fetch student data and their attendance records
+                                $student_query = "SELECT s.id, s.name, s.class_roll FROM students s where s.id='$user_id' ORDER BY s.class_roll ASC ";
+                                $student_result = mysqli_query($con, $student_query);
+                                $students = [];
+                                while ($row = mysqli_fetch_assoc($student_result)) {
+                                    $students[$row['id']] = [
+                                        'name' => $row['name'], 
+                                        'class_roll' => $row['class_roll'], 
+                                        'attendance' => array_fill_keys($dates, '<i class="fas fa-times text-danger"></i>') // Default absent
+                                    ];
+                                }
+                                
+                                // Fetch attendance records
+                                $attendance_query = "SELECT student_id, date, value FROM attendance";
+                                $attendance_result = mysqli_query($con, $attendance_query);
+                                while ($row = mysqli_fetch_assoc($attendance_result)) {
+                                    // Make sure the value is either '1' or '0'
+                                    $attendance_value = $row['value'] == 1 ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>';
+                                    $students[$row['student_id']]['attendance'][$row['date']] = $attendance_value;
+                                }
+                                
+                                $total_days = count($dates);
+                                ?>
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Students</th>
+                                    <?php foreach ($dates as $date) { echo "<th>$date</th>"; } ?>
+                                    <th>Attendance %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($students as $student) { 
+                                        if (!isset($student['name']) || empty($student['name'])) {
+                                            continue; // Skip empty or invalid student entries
+                                        }
+                                    $present_count = substr_count(implode('', $student['attendance']), 'fa-check');
+                                    ?>
+                                <tr>
+                                    <td class="text-left"><?php echo isset($student['name']) ? $student['name'] : 'N/A'; ?></td>
+                                    <?php foreach ($dates as $date) {
+                                    echo "<td>" . $student['attendance'][$date] . "</td>";
+                                    } ?>
+                                    <td><?php echo $total_days > 0 ? round(($present_count / $total_days) * 100, 2) . '%' : '0%'; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
+            </div>
+        <?php }?>
+</div>
 <?php 
-include("footer.php");
-?>
+   include("footer.php");
+   ?>
+   <script>
+    
+    // Function to check if all fields are filled
+    function checkFormFields() {
+        var semester = $('#semester').val();
+        var course = $('#course').val();
+
+        if (semester !== "0" && course !== "") {
+                $('#get_attendance').prop('disabled', false); 
+        } else {
+            $('#get_attendance').prop('disabled', true); 
+        }
+    }
+
+   $("#semester").change(function() {
+        checkFormFields();
+        // alert();
+       var semester = $(this).val();
+
+       $.ajax({
+           url: "ajax/fetch_courses",
+           method: "POST",
+           data: { semester: semester 
+           },
+           success: function(response) {
+               $("#course").html(response);
+           }
+       });
+
+       $("#course").change(function() {
+           checkFormFields();
+       });
+
+   });</script>

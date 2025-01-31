@@ -264,27 +264,26 @@ if(isset($_POST['submit'])){
                         <select class="form-control select2" name="bloodGroup">
                             <option>Select Blood Group</option>
                             <?php
-                            $data=[
-                                'name'=>[
-                                    'A+',
-                                    'A-',
-                                    'B+',
-                                    'B-',
-                                    'AB+',
-                                    'AB-',
-                                    'O+',
-                                    'O-',
-                                ]
-                            ];
-                            $count=count($data['name']);
-                            for($i=0;$i<$count;$i++){
-                                if($data['name'][$i]==$bloodGroup){
-                                    echo "<option selected='selected' value=".$data['name'][$i].">".$data['name'][$i]."</option>";
-                                }else{
-                                    echo "<option value=".$data['name'][$i].">".$data['name'][$i]."</option>";
-                                }                                                        
-                            }
-                            ?>
+                                $data = [
+                                    'A+'  => 'A+',
+                                    'A-'  => 'A-',
+                                    'B+'  => 'B+',
+                                    'B-'  => 'B-',
+                                    'AB+' => 'AB+',
+                                    'AB-' => 'AB-',
+                                    'O+'  => 'O+',
+                                    'O-'  => 'O-'
+                                ];
+
+                                foreach ($data as $key => $val) {
+                                    if ($key == $bloodGroup) {
+                                        echo "<option selected='selected' value='$key'>$val</option>";
+                                    } else {
+                                        echo "<option value='$key'>$val</option>";
+                                    }
+                                }
+                                ?>
+
                         </select>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-12 form-group">

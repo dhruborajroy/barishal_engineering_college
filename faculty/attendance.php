@@ -1,7 +1,7 @@
 <?php 
    define('SECURE_ACCESS', true);
    include("header.php");
-   
+   $semester="";
    ?>
 <!-- MAIN CONTENT-->
 <div class="main-content">
@@ -22,23 +22,28 @@
                      <div class="col-sm-12 col-md-4 mt-2">
                         <select name="semester" id="semester" class="form-control-lg form-control">
                            <option value='0'>Select Semester</option>
-                           <?php 
-                              $semesters = [
-                                  '1' => '1st',
-                                  '2' => '2nd',
-                                  '3' => '3rd',
-                                  '4' => '4th',
-                                  '5' => '5th',
-                                  '6' => '6th',
-                                  '7' => '7th',
-                                  '8' => '8th',
-                              ];
-                              foreach ($semesters as $key=>$sem) {
-                                  echo "<option value='$key'>$sem</option>";
-                              }
-                              ?>
+                           
+                           <?php
+                                $data  = [
+                                    '1' => '1st',
+                                    '2' => '2nd',
+                                    '3' => '3rd',
+                                    '4' => '4th',
+                                    '5' => '5th',
+                                    '6' => '6th',
+                                    '7' => '7th',
+                                    '8' => '8th',
+                                ];
+
+                                foreach ($data as $key => $val) {
+                                    if ($key == $semester) {
+                                        echo "<option selected='selected' value='$key'>$val</option>";
+                                    } else {
+                                        echo "<option value='$key'>$val</option>";
+                                    }
+                                }
+                                ?>
                         </select>
-                     </div>
                      <div class="col-sm-12 col-md-4 mt-2">
                         <select name="course" id="course" class="form-control-lg form-control">
                            <option value="">Select Course</option>
@@ -61,6 +66,12 @@
          <div class="card">
             <div class="card-header">
                <strong class="card-title">Attendance List</strong>
+               <div>
+                <span id="total_students">Total Students: 0</span> |
+                <span id="present_students">Present: 0</span> |
+                <span id="absent_students">Absent: 0</span>
+            </div>
+
             </div>
             <div id="students-container">
                <p class="text-center">Select date, semester, course to view students.</p>
@@ -71,23 +82,23 @@
 </div>
 <?php include("footer.php");?>
 <script>
-    
-    $(document).on("click", "#get_students", function() {
+    $(document).on("click", "#get_students", function () {
     var selectedDate = $('#dateInput').val();
     var semester = $('#semester').val();
     var course = $('#course').val();
 
-    // Step 1: Fetch students list
+    // Fetch students list
     $.ajax({
         url: "ajax/fetch_students",
         method: "POST",
         data: { selectedDate: selectedDate, semester: semester, course: course },
-        success: function(response) {
+        success: function (response) {
             $("#students-container").html(response);
+            updateAttendanceCount();
 
-            // Step 2: Insert default attendance (status = 0) for all students
+            // Insert default attendance (status = 0) for all students
             let student_ids = [];
-            $(".attendance-toggle").each(function() {
+            $(".attendance-toggle").each(function () {
                 student_ids.push($(this).data("id"));
             });
 
@@ -98,7 +109,7 @@
                     semester: semester,
                     selectedDate: selectedDate,
                     course: course
-                }, function(response) {
+                }, function (response) {
                     if (response == "success") {
                         console.log("Default attendance inserted successfully");
                     } else {
@@ -110,6 +121,47 @@
     });
 });
 
+// Function to count present and absent students
+function updateAttendanceCount() {
+    let total = $(".attendance-toggle").length;
+    let present = $(".attendance-toggle:checked").length;
+    let absent = total - present;
+
+    $("#total_students").text(`Total Students: ${total}`);
+    $("#present_students").text(`Present: ${present}`);
+    $("#absent_students").text(`Absent: ${absent}`);
+}
+
+// Update counts on attendance toggle change
+$(document).on("change", ".attendance-toggle", function () {
+    let student_id = $(this).data("id");
+    let status = $(this).is(":checked") ? 1 : 0;
+
+    var selectedDate = $('#dateInput').val();
+    var faculty_id = $('#faculty_id').val();
+    var semester = $('#semester').val();
+    var course = $('#course').val();
+
+    $.post("ajax/insert_attendance", {
+        student_id: student_id,
+        status: status,
+        semester: semester,
+        selectedDate: selectedDate,
+        course: course,
+        faculty_id: faculty_id
+    }, function (response) {
+        if (response == "success") {
+            toastr.success('Attendance updated successfully!', 'Success');
+            updateAttendanceCount();
+        } else {
+            toastr.warning('Something went wrong.', 'Warning');
+        }
+    });
+});
+
+
+
+    
    $(document).ready(function() {
        let today = new Date().toISOString().split('T')[0]; // Get today's date
        $("#dateInput").val(today);

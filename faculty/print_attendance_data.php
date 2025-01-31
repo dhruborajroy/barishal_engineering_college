@@ -95,7 +95,7 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
 <table class="table bs-table table-striped table-bordered text-nowrap">
     <?php 
         // Fetch all distinct dates
-        $date_query = "SELECT DISTINCT date FROM attendance ORDER BY date ASC";
+        $date_query = "SELECT DISTINCT date FROM attendance where faculty_id='$faculty_id' and course_id='4' ORDER BY date ASC";
         $date_result = mysqli_query($con, $date_query);
         $dates = [];
         while ($row = mysqli_fetch_assoc($date_result)) {
@@ -110,19 +110,20 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
             $students[$row['id']] = [
                 'name' => $row['name'], 
                 'class_roll' => $row['class_roll'], 
-                'attendance' => array_fill_keys($dates, 'Absent') // Default absent
+                'attendance' => array_fill_keys($dates, 'A') // Default absent
             ];
         }
-
+        // pr($students);
         // Fetch attendance records
         $attendance_query = "SELECT student_id, date, value FROM attendance";
         $attendance_result = mysqli_query($con, $attendance_query);
         while ($row = mysqli_fetch_assoc($attendance_result)) {
             // Replace attendance value with 'Present' or 'Absent'
-            $attendance_value = $row['value'] == 1 ? 'Present' : 'Absent';
+            $attendance_value = $row['value'] == 1 ? 'P' : 'A';
             $students[$row['student_id']]['attendance'][$row['date']] = $attendance_value;
         }
-
+        // pr($students);
+        
         $total_days = count($dates);
     ?>
     <thead>
@@ -134,14 +135,17 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
     </thead>
     <tbody>
         <?php foreach ($students as $student) { 
-            $present_count = substr_count(implode('', $student['attendance']), 'Present');
+            if (!isset($student['name']) || empty($student['name'])) {
+                continue; // Skip empty or invalid student entries
+            }
+            $present_count = substr_count(implode('', $student['attendance']), 'P');
             $attendance_percentage = $total_days > 0 ? round(($present_count / $total_days) * 100, 2) : 0;
             $row_class = $attendance_percentage < 60 ? 'row-f' : ''; // Mark rows with less than 60% attendance
         ?>
             <tr class="<?php echo $row_class; ?>">
                 <td class="text-left"><?php echo $student['name']; ?></td>
                 <?php foreach ($dates as $date) {
-                    $cell_class = $student['attendance'][$date] == 'Present' ? 'cell-positive' : '';
+                    $cell_class = $student['attendance'][$date] == 'P' ? 'cell-positive' : '';
                     echo "<td class='$cell_class'>" . $student['attendance'][$date] . "</td>";
                 } ?>
                 <td class="<?php echo $attendance_percentage < 60 ? 'attendance-percent-low' : ''; ?>">
@@ -154,3 +158,5 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
 
 </body>
 </html>
+<?php 
+        // pr($students);?>

@@ -135,7 +135,7 @@ define('SECURE_ACCESS', true);
                         'body'=>'Data updated',
                         'title'=>'Success',
                     );
-                  //   redirect('./people');
+                    redirect('./people');
                 }else{
                     echo $sql;
                 }
@@ -149,7 +149,7 @@ define('SECURE_ACCESS', true);
                     'body'=>'Data updated',
                     'title'=>'Success',
                 );
-               //  redirect('faculty');
+                redirect('people');
             }else{
                 echo $sql;
             }

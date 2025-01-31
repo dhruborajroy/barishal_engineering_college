@@ -154,6 +154,14 @@ function getUsers(){
 	  return $row['number'];
 	}
 } 
+function getTotalCourse($faculty_id){
+	global $con;
+	$sql="SELECT count(DISTINCT id) as number FROM course_teachers where teacher_id='$faculty_id'";
+	$res=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_assoc($res)){
+	  return $row['number'];
+	}
+} 
 
 function gettotalstudent($gender=""){
 	global $con;
