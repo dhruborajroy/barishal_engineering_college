@@ -331,21 +331,6 @@ include('../../inc/function.inc.php');
 
 
 
-<?php 
-    if(isset($_SESSION['PERMISSION_ERROR'])){
-        echo 'toastr.error("You don\'t have permission to access that location")';
-    }
-    unset($_SESSION['PERMISSION_ERROR']);
-    if(isset($_SESSION['UPDATE'])){
-        echo 'toastr.success("Data Updated successfully")';
-    }
-    unset($_SESSION['UPDATE']);
-    if(isset($_SESSION['INSERT'])){
-        echo 'toastr.success("Data inserted successfully")';
-    }
-    unset($_SESSION['INSERT']);
-?>
-
 toastr.options = {
     "closeButton": true,
     "debug": true,
