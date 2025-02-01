@@ -198,25 +198,25 @@ isAdmin();
          <div class="sidebar-menu-content">
             <ul class="nav nav-sidebar-menu sidebar-toggle-view">
                <li class="nav-item">
-                  <a href="index" class="nav-link <?php // echo  $index_active?>">
+                  <a href="index" class="nav-link ">
                      <i class="flaticon-dashboard"></i>
                      <span>Dashboard</span>
                   </a>
                </li>
                <li class="nav-item">
-                  <a href="sliders" class="nav-link <?php // echo  $index_active?>">
+                  <a href="sliders" class="nav-link ">
                      <i class="flaticon-dashboard"></i>
                      <span>Sliders</span>
                   </a>
                </li>
                <li class="nav-item">
-                  <a href="about_us" class="nav-link <?php // echo  $index_active?>">
+                  <a href="about_us" class="nav-link">
                      <i class="flaticon-dashboard"></i>
                      <span>About Us</span>
                   </a>
                </li>
                <li class="nav-item">
-                  <a href="course_teachers" class="nav-link <?php // echo  $index_active?>">
+                  <a href="course_teachers" class="nav-link ">
                      <i class="flaticon-dashboard"></i>
                      <span>Course Teachers</span>
                   </a>
@@ -253,16 +253,11 @@ isAdmin();
                </li>
                <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Services & Requests </span></a>
-                  <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
+                  <ul class="nav sub-group-menu ">
                   <li class="nav-item">
                         <a href="service_requests"
                            class="nav-link "><i
-                           class="fas fa-angle-right"></i>services_request</a>
-                     </li>
-                     <li class="nav-item">
-                        <a href="labs"
-                           class="nav-link "><i
-                           class="fas fa-angle-right"></i>Labs</a>
+                           class="fas fa-angle-right"></i>Services Request</a>
                      </li>
                   </ul>
                </li>
@@ -320,7 +315,7 @@ isAdmin();
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>General Info</span></a>
+                  <a href="#" class="nav-link"><i class="flaticon-settings"></i><span>General Info</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">
                         <a href="bec_general_infos"
@@ -375,6 +370,87 @@ isAdmin();
                      </li>
                   </ul>
                </li>
+               <!-- library datas -->
+                
+               <li class="nav-item sidebar-nav-item">
+                            <a href="#" class="nav-link"><i class="flaticon-open-book"></i><span>Books</span></a>
+                            <ul class="nav sub-group-menu ">
+                                <li class="nav-item">
+                                    <a href="books" class="nav-link"><i
+                                            class="fas fa-angle-right"></i>All
+                                        Books</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="manage_books"
+                                        class="nav-link "><i
+                                            class="fas fa-angle-right"></i>Add new Book</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="book_issues" class="nav-link "><i
+                                    class="flaticon-technological"></i><span>Issued Books</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="requested_books" class="nav-link "><i
+                                    class="flaticon-dashboard"></i><span>Requested Books</span></a>
+                        </li>
+                        <li class="nav-item sidebar-nav-item">
+                            <a href="#" class="nav-link"><i class="flaticon-planet-earth"></i><span>Publications</span></a>
+                            <ul class="nav sub-group-menu">
+                                <li class="nav-item">
+                                    <a href="publications" class="nav-link "><i
+                                            class="fas fa-angle-right"></i>All
+                                        publications</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="manage_publications"
+                                        class="nav-link "><i
+                                            class="fas fa-angle-right"></i>Add new Publications</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidebar-nav-item">
+                            <a href="#" class="nav-link"><i class="flaticon-couple"></i><span>Authors</span></a>
+                            <ul class="nav sub-group-menu">
+                                <li class="nav-item">
+                                    <a href="authors" class="nav-link"><i
+                                            class="fas fa-angle-right"></i>All
+                                        Authors</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="manage_author"
+                                        class="nav-link "><i
+                                            class="fas fa-angle-right"></i>Add new Author</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item sidebar-nav-item">
+                            <a href="#" class="nav-link"><i class="flaticon-menu-1"></i><span>Departments and
+                                    Batches</span></a>
+                            <ul class="nav sub-group-menu ">
+                                <li class="nav-item">
+                                    <a href="depts" class=" nav-link "><i
+                                            class="fas fa-angle-right"></i>All
+                                        Departments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="manageDepts"
+                                        class="nav-link "><i
+                                            class="fas fa-angle-right"></i>Add new Department</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="batches" class="nav-link "><i
+                                            class="fas fa-angle-right"></i>All
+                                        Batches</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="selfs"
+                                        class="nav-link "><i
+                                            class="fas fa-angle-right"></i>Book Selfs</a>
+                                </li>
+                            </ul>
+                        </li>
             </ul>
          </div>
       </div>

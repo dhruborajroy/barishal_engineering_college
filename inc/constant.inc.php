@@ -20,6 +20,15 @@ define('UPLOAD_NOTICE_PDF',$_SERVER['DOCUMENT_ROOT']."/notice_files/");
 define('UPLOAD_NEWS_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/news/");
 define('UPLOAD_STUDENT_IMAGE',$_SERVER['DOCUMENT_ROOT']."/images/students/");
 
+define('STUDENT_IMAGE',FRONT_SITE_PATH."/images/students/");
+define('BOOK_IMAGE_FOLDER',"/library/media/books/");
+define('ADMIN_IMAGE_FOLDER',"/library/media/users/");
+
+define('BOOK_IMAGE',FRONT_SITE_PATH.BOOK_IMAGE_FOLDER);
+define('ADMIN_IMAGE',FRONT_SITE_PATH.ADMIN_IMAGE_FOLDER);
+define('UPLOAD_BOOK_IMAGE',$_SERVER['DOCUMENT_ROOT']."/library/media/books/");
+define('UPLOAD_ADMIN_IMAGE',$_SERVER['DOCUMENT_ROOT']."/library/media/users/");
+define('IMAGE_DECRESE_PERCENT',10);
 
 $site_res=mysqli_query($con,"SELECT * FROM `site_details` where id='1'");
 if(mysqli_num_rows($site_res)>0){

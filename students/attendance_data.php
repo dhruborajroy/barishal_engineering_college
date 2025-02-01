@@ -7,50 +7,50 @@
 <div class="col-12">
     
 <div class="card">
-            <div class="card-header">
-               <strong>Students Attandance</strong>
+    <div class="card-header">
+        <strong>Students Attandance</strong>
+    </div>
+    <div class="card-body card-block">
+        <form  enctype="multipart/form-data" class="form-horizontal">
+            <div class="row form-group col-md-12">
+                <div class="col-sm-12 col-md-6 mt-2">
+                <select  id="semester" class="form-control-lg form-control">
+                    <option value='0'>Select Semester</option>
+                    <?php 
+                        $semesters = [
+                            '1' => '1st',
+                            '2' => '2nd',
+                            '3' => '3rd',
+                            '4' => '4th',
+                            '5' => '5th',
+                            '6' => '6th',
+                            '7' => '7th',
+                            '8' => '8th',
+                        ];
+                        foreach ($semesters as $key=>$sem) {
+                            echo "<option value='$key'>$sem</option>";
+                        }
+                        ?>
+                </select>
+                </div>
+                <div class="col-sm-12 col-md-6 mt-2">
+                <select name="course_id" id="course" class="form-control-lg form-control">
+                    <option value="">Select Course</option>
+                </select>
+                </div>
             </div>
-            <div class="card-body card-block">
-               <form  method="get" enctype="multipart/form-data" class="form-horizontal">
-                  <div class="row form-group col-md-12">
-                     <div class="col-sm-12 col-md-6 mt-2">
-                        <select  id="semester" class="form-control-lg form-control">
-                           <option value='0'>Select Semester</option>
-                           <?php 
-                              $semesters = [
-                                  '1' => '1st',
-                                  '2' => '2nd',
-                                  '3' => '3rd',
-                                  '4' => '4th',
-                                  '5' => '5th',
-                                  '6' => '6th',
-                                  '7' => '7th',
-                                  '8' => '8th',
-                              ];
-                              foreach ($semesters as $key=>$sem) {
-                                  echo "<option value='$key'>$sem</option>";
-                              }
-                              ?>
-                        </select>
-                     </div>
-                     <div class="col-sm-12 col-md-6 mt-2">
-                        <select name="course_id" id="course" class="form-control-lg form-control">
-                           <option value="">Select Course</option>
-                        </select>
-                     </div>
-                  </div>
-            </div>
-            <div class="card-footer">
-               <input type="submit" value="Get Attendance" disabled id="get_attendance"  class="btn btn-primary btn-sm">
-               <a href="attendance"> 
-                    <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Reset
-               </button>
-               </a>
-            </div>
-            
-            </form>
-         </div>
+    </div>
+    <div class="card-footer">
+        <input type="submit" value="Get Attendance" disabled id="get_attendance"  class="btn btn-primary btn-sm">
+        <a href="attendance"> 
+            <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+        </button>
+        </a>
+    </div>
+    
+    </form>
+    </div>
         <?php if(isset($_GET['course_id'])){?>
             <div class="card">
                 <div class="card-body">

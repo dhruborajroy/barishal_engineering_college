@@ -48,6 +48,7 @@ if(isset($_GET['id']) && $_GET['id']!=""){
             'body'=>'You don\'t have the permission to access the location!',    
             'title'=>'Error',
         );
+        redirect("students");
     }
 }
 if(isset($_POST['submit'])){
@@ -66,6 +67,7 @@ if(isset($_POST['submit'])){
 	$email=get_safe_value($_POST['email']);
     $dept_id=get_safe_value($_POST['dept_id']);
     $batch=get_safe_value($_POST['batch']);
+    $semester=get_safe_value($_POST['semester']);
     $time=time();
 
     if($id==''){
@@ -81,39 +83,68 @@ if(isset($_POST['submit'])){
                 $msg= '<div class="alert alert-danger col-lg-12" role="alert">
                         Only select jpg or png image
                     </div>';
+                    $_SESSION['TOASTR_MSG']=array(
+                        'type'=>'warning',
+                        'body'=>'Only select jpg or png image',
+                        'title'=>'Error',
+                    );
             }
             if(mysqli_num_rows(mysqli_query($con,"select id from students where phoneNumber='$phoneNumber'"))>0){
                 $msg='<div class="alert alert-danger col-lg-12" role="alert">
                         Phone number is already added
                     </div>';
+                    $_SESSION['TOASTR_MSG']=array(
+                        'type'=>'warning',
+                        'body'=>'Phone number is already added',
+                        'title'=>'Error',
+                    );
             }elseif(mysqli_num_rows(mysqli_query($con,"select id from students where email='$email'"))>0){
                 $msg='<div class="alert alert-danger col-lg-12" role="alert">
                         Email is already added.
                     </div>';
+                    
+                $_SESSION['TOASTR_MSG']=array(
+                    'type'=>'warning',
+                    'body'=>'Email is already added.',
+                    'title'=>'Error',
+                );
             }else{
                 if(isset($img)){
-                    if (($_FILES["image"]["size"] > 300000)) {//2000000 = 2Mb
+                    if (($_FILES["image"]["size"] > 1000000)) {//2000000 = 2Mb
                         $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
-                        Image size exceeds 300 kb.
-                    </div>";
+                                    Image size exceeds 1 MB.
+                                </div>";
+                                $_SESSION['TOASTR_MSG']=array(
+                                    'type'=>'warning',
+                                    'body'=>'Image size exceeds 1 MB',
+                                    'title'=>'Error',
+                                );
                     }else{
                         $random_password=uniqid();
                         $password=password_hash($random_password,PASSWORD_DEFAULT);
                         $image=time().'.jpg';
                         move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_STUDENT_IMAGE.$image);
-                        $sql="INSERT INTO `students` (`name`,  `class_roll`,`reg_no`,`fName`,  `mName`,  `phoneNumber`, `presentAddress`, `permanentAddress`, `dob`, `gender`, `religion`,  `bloodGroup`, `image`,`email`,`dept_id`,`batch`,`password`,`status`)
-                                                VALUES ( '$name', '$class_roll','$reg_no','$fName',  '$mName',  '$phoneNumber','$presentAddress','$permanentAddress','$dob','$gender','$religion','$bloodGroup','$image','$email','$dept_id','$batch','$password', 1)";
+                        $sql="INSERT INTO `students` (`name`,  `class_roll`,`reg_no`,`fName`,  `mName`,  `phoneNumber`, `presentAddress`, `permanentAddress`, `dob`, `gender`, `religion`,  `bloodGroup`, `image`,`email`,`dept_id`,`batch`,`semester`,`password`,`status`)
+                                                VALUES ( '$name', '$class_roll','$reg_no','$fName',  '$mName',  '$phoneNumber','$presentAddress','$permanentAddress','$dob','$gender','$religion','$bloodGroup','$image','$email','$dept_id','$batch','$semester','$password', 1)";
                         if(mysqli_query($con,$sql)){
-                            $_SESSION['INSERT']=1;
+                            $_SESSION['TOASTR_MSG']=array(
+                                'type'=>'success',
+                                'body'=>'Data Updated',
+                                'title'=>'Success',
+                            );
                             send_email($email,"Your account has been created. Your password is <b>".$random_password." </b>. Please login and change your password <br>  ".FRONT_SITE_PATH."/students\/","Account Created");
                             redirect("students.php");
-
                         }
                     }
                 }
                 
             }
         }else{
+            $_SESSION['TOASTR_MSG']=array(
+                'type'=>'warning',
+                'body'=>'Only select jpg or png image',
+                'title'=>'Error',
+            );
             $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
                         Only select jpg or png image
                     </div>";
@@ -132,29 +163,56 @@ if(isset($_POST['submit'])){
                     $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
                         Only select jpg or png image
                     </div>";
+                    $_SESSION['TOASTR_MSG']=array(
+                        'type'=>'warning',
+                        'body'=>'Only select jpg or png image',
+                        'title'=>'Error',
+                    );
                 }
                 if(isset($img)){
-                    if (($_FILES["image"]["size"] > 300000)) {//2000000 = 2Mb
-                        $msg= "Image size exceeds 200 kb";
+                    if (($_FILES["image"]["size"] > 1000000)) {//2000000 = 2Mb
+                        $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
+                                    Image size exceeds 1 MB.
+                                </div>";
+                                $_SESSION['TOASTR_MSG']=array(
+                                    'type'=>'warning',
+                                    'body'=>'Image size exceeds 1 MB',
+                                    'title'=>'Error',
+                                );
                     }else{
                         $image=time().'.jpg';
                         // $image=imagejpeg($img,$image,40);
                         move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_STUDENT_IMAGE.$image);
-                        $sql="update `students` set  `name`='$name',`class_roll`='$class_roll',`reg_no`='$reg_no', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`bloodGroup`='$bloodGroup',`image`='$image', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
-                        mysqli_query($con,$sql);
-                        $_SESSION['UPDATE']=1;
-                        redirect("students.php");
+                        $sql="update `students` set  `name`='$name',`class_roll`='$class_roll',`reg_no`='$reg_no', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`semester`='$semester',`bloodGroup`='$bloodGroup',`image`='$image', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
+                        if(mysqli_query($con,$sql)){
+
+                            $_SESSION['TOASTR_MSG']=array(
+                                'type'=>'success',
+                                'body'=>'Data Updated',
+                                'title'=>'Success',
+                            );
+                            redirect("students.php");   
+                        }
                     }
                 }
             }else{
                 $msg= "<div class=\"alert alert-danger col-lg-12\" role=\"alert\">
                         Only select jpg or png image
                     </div>";
+                    $_SESSION['TOASTR_MSG']=array(
+                        'type'=>'warning',
+                        'body'=>'Only select jpg or png image',
+                        'title'=>'Error',
+                    );
             }
         }else{
-            $sql="update `students` set  `name`='$name',`class_roll`='$class_roll',`reg_no`='$reg_no', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`bloodGroup`='$bloodGroup', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
+            $sql="update `students` set  `name`='$name',`class_roll`='$class_roll',`reg_no`='$reg_no', `fName`='$fName',`mName`='$mName',`phoneNumber`='$phoneNumber',`permanentAddress`='$permanentAddress',`dob`='$dob',`gender`='$gender',`religion`='$religion',`batch`='$batch',`semester`='$semester',`bloodGroup`='$bloodGroup', `email`='$email', `dept_id`='$dept_id'  where md5(id)='$id'";
             if(mysqli_query($con,$sql)){
-                $_SESSION['UPDATE']=1;
+                $_SESSION['TOASTR_MSG']=array(
+                    'type'=>'success',
+                    'body'=>'Data Updated',
+                    'title'=>'Success',
+                );
                 redirect("students.php");
             }
         }
@@ -343,6 +401,32 @@ if(isset($_POST['submit'])){
                             ?>
                         </select>
                     </div>
+                    <div class="col-3-xxxl col-lg-3 col-12 form-group">
+                        <label for="visibility">Semester</label>
+                        <select class="form-control select2" name="semester" id="semester" >
+                            <option value='0'>Select Semester</option>
+                            <?php
+                                    $data  = [
+                                        '1' => '1st',
+                                        '2' => '2nd',
+                                        '3' => '3rd',
+                                        '4' => '4th',
+                                        '5' => '5th',
+                                        '6' => '6th',
+                                        '7' => '7th',
+                                        '8' => '8th',
+                                    ];
+
+                                    foreach ($data as $key => $val) {
+                                        if ($key == $semester) {
+                                            echo "<option selected='selected' value='$key'>$val</option>";
+                                        } else {
+                                            echo "<option value='$key'>$val</option>";
+                                        }
+                                    }
+                                    ?>
+                        </select>
+                    </div>
                     <div class="col-lg-6 col-12 form-group">
                         <div class="col-sm-12 img-body">
                             <div class="center">
@@ -352,7 +436,7 @@ if(isset($_POST['submit'])){
                                                     echo 'src="../images/students/'.$image.'"';}
                                                     ?> style="width:200px;height: 200px">
                                     </div>
-                                    <label for="file_ip_1">Upload Image</label>
+                                    <label for="file_ip_1">Upload Image(Maximum Size 1 Mb)</label>
                                     <input type="file" name="image" id="file_ip_1" accept="image/*"
                                         onchange="showPreview(event);" <?php echo $required?>
                                         value="<?php echo $image?>">

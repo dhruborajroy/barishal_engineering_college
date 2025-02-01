@@ -163,6 +163,18 @@ function getTotalCourse($faculty_id){
 	}
 } 
 
+function set_zero($number,$redix="3"){
+	return str_pad($number, $redix, '0', STR_PAD_LEFT);
+}
+
+function getAvailableBooksCount($book_id){
+	global $con;
+	$sql="SELECT count(DISTINCT id) as number FROM book_issues where book_id='$book_id'";
+	$res=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_assoc($res)){
+	  return $row['number'];
+	}
+} 
 function gettotalstudent($gender=""){
 	global $con;
     $add_sql="";
@@ -175,6 +187,20 @@ function gettotalstudent($gender=""){
 	  return $row['student'];
 	}
 }
+
+
+function getUsersIssuedBooksCount($user_id){
+	$additional_sql="";
+	global $con;
+	if($user_id!=''){
+		$additional_sql="where user_id='$user_id'";
+	}
+	$sql="SELECT count(DISTINCT id) as number FROM book_issues ".$additional_sql;
+	$res=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_assoc($res)){
+	  return $row['number'];
+	}
+} 
 
 function gettotalcount($type){
 	global $con;

@@ -33,7 +33,7 @@ include("header.php");
                                                 <i class="zmdi zmdi-book-image"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>4</h2>
+                                                <h2><?php echo getUsersIssuedBooksCount($_SESSION['USER_ID'])?></h2>
                                                 <span>Issued Library Books</span>
                                             </div>
                                         </div>

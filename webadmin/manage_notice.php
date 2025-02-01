@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            // redirect('./about_us');
+            // redirect('./notices');
         }else{
             echo $sql;
         }
@@ -117,7 +117,7 @@ if(isset($_POST['submit'])){
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            // redirect('./about_us');
+            // redirect('./notices');
         }else{
             echo $sql;
         }

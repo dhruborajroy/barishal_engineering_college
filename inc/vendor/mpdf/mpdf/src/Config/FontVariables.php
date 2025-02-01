@@ -248,6 +248,10 @@ class FontVariables
 					'R' => "damase_v.2.ttf",
 				],
 				/* Indic */
+				"solaimanlipi" => [
+					'R' => "SolaimanLipi.ttf",
+					'B' => "SolaimanLipi-Bold.ttf",
+				],
 				"nikosh" => [
 					'R' => "Nikosh.ttf",
 					'B' => "Nikosh.ttf",

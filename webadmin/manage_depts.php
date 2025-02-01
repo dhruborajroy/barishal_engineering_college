@@ -73,12 +73,12 @@ if(isset($_POST['submit'])){
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Notice board</h3>
+        <h3>Departments</h3>
         <ul>
             <li>
                 <a href="index.php">Home</a>
             </li>
-            <li>Notices </li>
+            <li>Departments </li>
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->

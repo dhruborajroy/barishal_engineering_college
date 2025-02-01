@@ -52,10 +52,9 @@ if(mysqli_num_rows($res)>0){
     redirect("logout");
 }
 ?>
-
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
+<!-- MAIN CONTENT-->
+<div class="main-content">
+                <div class="section_content section_content--p30">
                     <div class="container-fluid">
                         
                     <div class="col-lg-12">
@@ -83,131 +82,163 @@ if(mysqli_num_rows($res)>0){
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="email-input" class=" form-control-label">Email</label>
+                                            <label for="email-input" class=" form-control-label">Image</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $email?>" class="form-control">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $image?>" class="form-control">
 
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Class Roll</label>
+                                            <label for="disabled-input" class=" form-control-label">Designation</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $class_roll?>" class="form-control">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $designation?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Dhaka University Registration Number</label>
+                                            <label for="disabled-input" class=" form-control-label"> Phone</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $reg_no?>" class="form-control">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $phone?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Session</label>
+                                            <label for="disabled-input" class=" form-control-label"> Password</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $session?>" class="form-control">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $password?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Father's Name</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $fname?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Mother's Name</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $mname?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Phone Number</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $phoneNumber?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Present Address </label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $presentAddress?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Permanent Address</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $permanentAddress?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Date of Birth</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $dob?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Gender</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $gender?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Religion</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $religion?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Blood Group</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $bloodGroup?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">dept_id Group</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $dept_name?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Batch </label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $batch_name?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="disabled-input" class=" form-control-label">Email </label>
+                                            <label for="disabled-input" class=" form-control-label">Email</label>
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <input type="text" disabled id="text-input" name="text-input" value="<?php echo $email?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Dept</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $dept?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Bio</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $bio?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Facebook </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $facebook?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Linkedin</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $linked_in?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Education</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $education?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Experience</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $experience?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Teaching Supervision</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $teaching_supervision?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Research Interest</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $research_interest?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Publication</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $publication?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Scholarship Award </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $scholarship_award?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Scholarship Award </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $scholarship_award?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Research</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $research?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Dept Head </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $dept_head?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Type </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $type?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="disabled-input" class=" form-control-label">Joined At </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" disabled id="text-input" name="text-input" value="<?php echo $joined_at?>" class="form-control">
                                         </div>
                                     </div>
                                 </form>

@@ -62,7 +62,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                     </thead>
                     <tbody id="myTable">
                         <?php 
-                        $sql="select * from students";
+                        $sql="select students.*, batch.name as batch_name from students,batch where students.batch=batch.id";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;
@@ -74,7 +74,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                                     src="../images/students/<?php echo $row['image']?>" alt="student"></td>
                             <td class="sorting_1 dtr-control"><?php echo $row['fName']?></td>
                             <td class="sorting_1 dtr-control"><?php echo $row['reg_no']?></td>
-                            <td class="sorting_1 dtr-control"><?php echo $row['session']?></td>
+                            <td class="sorting_1 dtr-control"><?php echo $row['batch_name']?></td>
                             <td>
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

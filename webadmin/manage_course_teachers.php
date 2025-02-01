@@ -7,6 +7,7 @@ $course_code="";
 $id="";
 $teacher_id="";
 $semester="";
+$course_id="";
 $msg="";
 if(isset($_GET['id']) && $_GET['id']>0){
 	$id=get_safe_value($_GET['id']);
@@ -93,10 +94,7 @@ if(isset($_POST['submit'])){
             }
         }
     }
-    
-    // echo $sql;
-    // redirect('../pdfreports/notice?notice_id='.$id);
-    // redirect('./notices');
+    redirect('./course_teachers');
 }
 
 ?>
@@ -142,7 +140,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                                 <label for="visibility">Semester</label>
-                                <select class="form-control select2" name="semester" id="semester" >
+                                <select class="form-control" name="semester" id="semester" >
                                     <option value='0'>Select Semester</option>
                                     <?php
                                             $data  = [
@@ -226,23 +224,23 @@ if(isset($_POST['submit'])){
    $("#semester").change(function() {
         checkFormFields();
         // alert();
-       var semester = $(this).val();
-       var selectedCourse = $("#course").attr("data-selected"); // Get previously selected course
+        var semester = $(this).val();
+        var selectedCourse = $("#course").attr("data-selected"); // Get previously selected course
 
-       $.ajax({
-           url: "ajax/fetch_courses",
-           method: "POST",
-           data: {
-             semester: semester,
-             selected_course:selectedCourse 
-           },
-           success: function(response) {
-               $("#course").html(response);
-           }
-       });
-
-       $("#course").change(function() {
-           checkFormFields();
-       });
-
-   });</script>
+        $.ajax({
+            url: "ajax/fetch_courses",
+            method: "POST",
+            data: {
+                semester: semester,
+                selected_course:selectedCourse 
+            },
+            success: function(response) {
+                $("#course").html(response);
+            }
+        });
+        $("#course").change(function() {
+            checkFormFields();
+        });
+   });
+   
+   </script>

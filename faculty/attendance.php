@@ -44,6 +44,7 @@
                                 }
                                 ?>
                         </select>
+                    </div>
                      <div class="col-sm-12 col-md-4 mt-2">
                         <select name="course" id="course" class="form-control-lg form-control">
                            <option value="">Select Course</option>

@@ -71,7 +71,7 @@ $user_id=$_SESSION[ 'USER_ID'];
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <!-- Mobile View -->
-
+                        
                         <li>
                             <a href="index">
                                 <i class="fas fa-chart-bar"></i>Dashboard</a>
@@ -87,6 +87,10 @@ $user_id=$_SESSION[ 'USER_ID'];
                         <li>
                             <a href="hall_clearance">
                                 <i class="fas  fa-certificate"></i>Hall Clearance</a>
+                        </li>
+                        <li>
+                            <a href="books">
+                                <i class="fas  fa-certificate"></i>Request Library books</a>
                         </li>
                         <li>
                             <a href="attendance">
@@ -133,6 +137,10 @@ $user_id=$_SESSION[ 'USER_ID'];
                         <li>
                             <a href="attendance_data">
                                 <i class="fas  fa-certificate"></i>Attendance</a>
+                        </li>
+                        <li>
+                            <a href="books">
+                                <i class="fas  fa-certificate"></i>Request Library books</a>
                         </li>
                         <li>
                             <a href="hall_clearance">

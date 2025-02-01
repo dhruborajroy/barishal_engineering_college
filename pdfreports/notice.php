@@ -22,7 +22,9 @@ if(mysqli_num_rows($res)>0){
     $row=mysqli_fetch_assoc($res);
     $file=$notice_id.'_'.time().'.pdf';
     QRcode::png(FRONT_SITE_PATH."notice_files/".$file, $filepath);
+    
     $html='<table class="table" width="100%">';
+
     $html.='
         <tr>
             <td align="left">                    
